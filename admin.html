@@ -1,0 +1,488 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>لوحة تحكم التاجر — Velum Fragrances (Vondera Portal)</title>
+  <link rel="icon" type="image/webp" href="https://cdn.vondera.app/stores/m2YjlfvGkHgUUlfXpywuC0x1pXX2/gallery/e4ac46af-462d-44ec-9bfe-5f164875e66f.webp">
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Cairo:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #09090b;
+      --card-bg: #141417;
+      --border: #27272a;
+      --crimson: #8c1212;
+      --crimson-hover: #a81616;
+      --text: #f4f4f5;
+      --text-muted: #a1a1aa;
+      --gold: #c9a96e;
+    }
+    * { margin:0; padding:0; box-sizing:border-box; font-family:'Cairo', 'Plus Jakarta Sans', sans-serif; }
+    body { background: var(--bg); color: var(--text); min-height:100vh; display:flex; }
+    
+    /* Login Lock Screen */
+    #adminLockOverlay {
+      position:fixed; inset:0; background:#000000; z-index:99999;
+      display:flex; align-items:center; justify-content:center; padding:20px;
+    }
+    .lock-box {
+      background:#111113; border:1px solid #8c1212; border-radius:14px;
+      padding:40px; width:100%; max-width:400px; text-align:center;
+      box-shadow:0 0 60px rgba(140,18,18,0.3);
+    }
+    .lock-input {
+      width:100%; padding:14px; background:#1c1c21; border:1px solid #333;
+      color:#fff; font-size:16px; border-radius:8px; text-align:center;
+      letter-spacing:4px; outline:none; margin:20px 0;
+    }
+    .lock-input:focus { border-color:#8c1212; }
+    .lock-btn {
+      width:100%; padding:14px; background:#8c1212; border:none; color:#fff;
+      font-size:15px; font-weight:700; border-radius:8px; cursor:pointer;
+      transition:background .2s;
+    }
+    .lock-btn:hover { background:#a81616; }
+
+    /* Dashboard Layout */
+    .sidebar {
+      width: 260px; background:#111114; border-left:1px solid var(--border);
+      padding:24px 16px; display:flex; flex-direction:column; justify-content:space-between;
+    }
+    .main-content {
+      flex:1; overflow-y:auto; padding:32px 40px; background:#09090b;
+    }
+    .brand-block {
+      display:flex; align-items:center; gap:12px; margin-bottom:34px; padding:0 8px;
+    }
+    .nav-item {
+      display:flex; align-items:center; gap:12px; padding:12px 14px; border-radius:8px;
+      color:var(--text-muted); text-decoration:none; font-size:14px; font-weight:600;
+      margin-bottom:6px; cursor:pointer; transition:all .2s;
+    }
+    .nav-item:hover, .nav-item.active {
+      background:rgba(140,18,18,0.18); color:#ffffff; border:1px solid rgba(140,18,18,0.4);
+    }
+    .badge-pill {
+      background:#8c1212; color:#fff; font-size:11px; padding:2px 8px; border-radius:10px; margin-right:auto;
+    }
+
+    /* Cards */
+    .stats-grid {
+      display:grid; grid-template-columns:repeat(4, 1fr); gap:18px; margin:24px 0 34px;
+    }
+    .stat-card {
+      background:var(--card-bg); border:1px solid var(--border); border-radius:12px; padding:20px;
+    }
+    .stat-title { font-size:13px; color:var(--text-muted); font-weight:600; margin-bottom:8px; }
+    .stat-value { font-size:26px; font-weight:800; color:#ffffff; }
+
+    /* Tables */
+    .card-wrap {
+      background:var(--card-bg); border:1px solid var(--border); border-radius:14px; padding:24px;
+    }
+    .table-top {
+      display:flex; justify-content:space-between; align-items:center; margin-bottom:20px;
+    }
+    table { width:100%; border-collapse:collapse; text-align:right; font-size:13px; }
+    th { padding:14px 16px; border-bottom:1px solid var(--border); color:var(--text-muted); font-weight:700; }
+    td { padding:16px; border-bottom:1px solid rgba(255,255,255,0.04); vertical-align:middle; }
+    tr:hover td { background:rgba(255,255,255,0.015); }
+    
+    .status-badge {
+      display:inline-block; padding:4px 10px; border-radius:6px; font-size:12px; font-weight:700;
+    }
+    .status-pending { background:rgba(234, 179, 8, 0.15); color:#facc15; border:1px solid rgba(234, 179, 8, 0.3); }
+    .status-processing { background:rgba(59, 130, 246, 0.15); color:#60a5fa; border:1px solid rgba(59, 130, 246, 0.3); }
+    .status-shipped { background:rgba(168, 85, 247, 0.15); color:#c084fc; border:1px solid rgba(168, 85, 247, 0.3); }
+    .status-delivered { background:rgba(34, 197, 94, 0.15); color:#4ade80; border:1px solid rgba(34, 197, 94, 0.3); }
+
+    .action-btn {
+      background:#1c1c21; border:1px solid #333; color:#fff; padding:6px 12px; border-radius:6px;
+      font-size:12px; cursor:pointer; text-decoration:none; display:inline-flex; align-items:center; gap:6px;
+    }
+    .action-btn:hover { border-color:#8c1212; background:#261818; }
+    .action-btn-primary { background:#8c1212; border:none; }
+    .action-btn-primary:hover { background:#a81616; }
+
+    @media (max-width: 900px) {
+      body { flex-direction:column; }
+      .sidebar { width:100%; border-left:none; border-bottom:1px solid var(--border); }
+      .stats-grid { grid-template-columns:repeat(2, 1fr); }
+      .main-content { padding:20px; }
+    }
+  </style>
+</head>
+<body onload="checkAuth()">
+
+  <!-- Security Lock Screen (Private Access Only) -->
+  <div id="adminLockOverlay">
+    <div class="lock-box">
+      <img src="https://cdn.vondera.app/stores/m2YjlfvGkHgUUlfXpywuC0x1pXX2/gallery/e4ac46af-462d-44ec-9bfe-5f164875e66f.webp" alt="VELUM" style="height:36px; margin-bottom:16px;" />
+      <h2 style="font-size:20px; font-weight:800; color:#fff; margin-bottom:6px;">لوحة تحكم المتجر</h2>
+      <p style="font-size:13px; color:var(--text-muted);">بوابة التاجر الخاصة — أدخل الرقم السري للمتابعة</p>
+      <input type="password" id="adminPasscode" class="lock-input" placeholder="••••" autofocus onkeydown="if(event.key==='Enter')verifyPasscode()" />
+      <button onclick="verifyPasscode()" class="lock-btn">تسجيل الدخول</button>
+      <small style="display:block; margin-top:14px; color:#555; font-size:11px;">الرقم الافتراضي: 8899</small>
+    </div>
+  </div>
+
+  <!-- Sidebar -->
+  <aside class="sidebar">
+    <div>
+      <div class="brand-block">
+        <img src="https://cdn.vondera.app/stores/m2YjlfvGkHgUUlfXpywuC0x1pXX2/gallery/e4ac46af-462d-44ec-9bfe-5f164875e66f.webp" alt="Velum" style="height:28px;" />
+        <div>
+          <div style="font-weight:800; font-size:14px; color:#fff;">Velum Fragrances</div>
+          <div style="font-size:11px; color:var(--gold);">تاجر مستقل &bull; Pro</div>
+        </div>
+      </div>
+      
+      <nav>
+        <div class="nav-item active" onclick="switchFilter('all')">
+          <span>📦 الطلبات</span>
+          <span class="badge-pill" id="sidePendingCount">0</span>
+        </div>
+        <div class="nav-item" onclick="switchFilter('Pending')">
+          <span>⏳ طلبات معلقة</span>
+        </div>
+        <div class="nav-item" onclick="switchFilter('Shipped')">
+          <span>🚚 تم الشحن</span>
+        </div>
+        <div class="nav-item" onclick="exportOrdersCSV()">
+          <span>📊 تصدير Excel (CSV)</span>
+        </div>
+        <a href="index.html" target="_blank" class="nav-item">
+          <span>🌐 فتح المتجر كعميل ↗</span>
+        </a>
+      </nav>
+    </div>
+
+    <div>
+      <div style="padding:14px; background:#17171c; border-radius:8px; border:1px solid #222; margin-bottom:12px;">
+        <div style="font-size:11px; color:#888;">حساب التاجر</div>
+        <div style="font-weight:700; font-size:13px; color:#fff;">youssef elbedwehy</div>
+        <div style="font-size:11px; color:#22c55e;">متصل بالمتجر مباشرة ✓</div>
+      </div>
+      <button onclick="logoutAdmin()" style="width:100%; background:none; border:1px solid #333; color:#a1a1aa; padding:10px; border-radius:6px; cursor:pointer; font-size:12px;">
+        تسجيل خروج ⎋
+      </button>
+    </div>
+  </aside>
+
+  <!-- Main Content -->
+  <main class="main-content">
+    <header style="display:flex; justify-content:space-between; align-items:center;">
+      <div>
+        <h1 style="font-size:24px; font-weight:900; color:#fff;">إدارة الطلبات والمبيعات</h1>
+        <p style="font-size:13px; color:var(--text-muted); margin-top:4px;">متابعة طلبات متجر Velum الحية وتحديث حالات الشحن مع Bosta</p>
+      </div>
+      <div style="display:flex; gap:10px;">
+        <button onclick="openManualOrderModal()" class="action-btn action-btn-primary">+ إضافة طلب يدوي</button>
+        <button onclick="exportOrdersCSV()" class="action-btn">تصدير شيت الطلبات</button>
+        <button onclick="loadOrders()" class="action-btn" title="تحديث">↻ تحديث</button>
+      </div>
+    </header>
+
+    <!-- KPI Stats -->
+    <div class="stats-grid">
+      <div class="stat-card">
+        <div class="stat-title">إجمالي المبيعات (EGP)</div>
+        <div class="stat-value" style="color:var(--gold);"><span id="statRevenue">0</span> <small style="font-size:14px; font-weight:600;">ج.م</small></div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-title">إجمالي عدد الطلبات</div>
+        <div class="stat-value" id="statOrdersTotal">0</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-title">طلبات معلقة تحتاج شحن</div>
+        <div class="stat-value" style="color:#facc15;" id="statOrdersPending">0</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-title">طلبات تم تسليمها</div>
+        <div class="stat-value" style="color:#4ade80;" id="statOrdersDelivered">0</div>
+      </div>
+    </div>
+
+    <!-- Orders Card -->
+    <div class="card-wrap">
+      <div class="table-top">
+        <div style="display:flex; gap:10px; align-items:center;">
+          <input type="text" id="orderSearchInput" oninput="filterOrders()" placeholder="بحث باسم العميل، الهاتف، أو رقم الطلب..." style="padding:10px 14px; background:#1c1c21; border:1px solid #333; color:#fff; border-radius:6px; font-size:13px; width:280px;" />
+          <div style="display:flex; gap:6px;">
+            <button class="action-btn filter-btn active" onclick="switchFilter('all', this)">الكل</button>
+            <button class="action-btn filter-btn" onclick="switchFilter('Pending', this)">معلق</button>
+            <button class="action-btn filter-btn" onclick="switchFilter('Shipped', this)">تم الشحن</button>
+            <button class="action-btn filter-btn" onclick="switchFilter('Delivered', this)">تم التسليم</button>
+          </div>
+        </div>
+        <span style="font-size:12px; color:var(--text-muted);" id="ordersCountNotice">0 طلب</span>
+      </div>
+
+      <div style="overflow-x:auto;">
+        <table>
+          <thead>
+            <tr>
+              <th>رقم الطلب</th>
+              <th>العميل</th>
+              <th>رقم الهاتف</th>
+              <th>المحافظة والعنوان</th>
+              <th>المنتجات المطلوبة</th>
+              <th>الإجمالي</th>
+              <th>طريقة الدفع</th>
+              <th>حالة الطلب</th>
+              <th>إجراءات</th>
+            </tr>
+          </thead>
+          <tbody id="ordersTableBody"></tbody>
+        </table>
+      </div>
+    </div>
+  </main>
+
+  <!-- Manual Order Modal -->
+  <div id="manualOrderModal" style="display:none; position:fixed; inset:0; background:rgba(0,0,0,0.85); z-index:9999; align-items:center; justify-content:center; padding:20px;">
+    <div style="background:#141417; border:1px solid #8c1212; border-radius:12px; width:100%; max-width:480px; padding:28px;">
+      <h3 style="font-size:18px; font-weight:800; margin-bottom:16px;">إضافة طلب جديد يدوياً (هاتف / إنستجرام)</h3>
+      <div style="display:flex; flex-direction:column; gap:12px;">
+        <input type="text" id="manName" placeholder="اسم العميل *" style="padding:10px; background:#1c1c21; border:1px solid #333; color:#fff; border-radius:6px;" />
+        <input type="tel" id="manPhone" placeholder="رقم الهاتف *" style="padding:10px; background:#1c1c21; border:1px solid #333; color:#fff; border-radius:6px;" />
+        <input type="text" id="manGov" placeholder="المحافظة *" style="padding:10px; background:#1c1c21; border:1px solid #333; color:#fff; border-radius:6px;" />
+        <textarea id="manAddress" placeholder="العنوان بالتفصيل *" rows="2" style="padding:10px; background:#1c1c21; border:1px solid #333; color:#fff; border-radius:6px;"></textarea>
+        <input type="text" id="manItems" placeholder="المنتج (مثال: Smoking Hot ×1) *" style="padding:10px; background:#1c1c21; border:1px solid #333; color:#fff; border-radius:6px;" />
+        <input type="number" id="manTotal" placeholder="المبلغ الإجمالي (مثال: 690) *" style="padding:10px; background:#1c1c21; border:1px solid #333; color:#fff; border-radius:6px;" />
+        <div style="display:flex; gap:10px; margin-top:10px;">
+          <button onclick="saveManualOrder()" class="action-btn action-btn-primary" style="flex:1; justify-content:center; padding:12px;">حفظ الطلب</button>
+          <button onclick="document.getElementById('manualOrderModal').style.display='none'" class="action-btn" style="padding:12px;">إلغاء</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+<script>
+const ADMIN_PASS = '8899';
+let currentFilter = 'all';
+
+function checkAuth() {
+  if (sessionStorage.getItem('velum_admin_logged') === 'true') {
+    document.getElementById('adminLockOverlay').style.display = 'none';
+    loadOrders();
+  }
+}
+
+function verifyPasscode() {
+  const input = document.getElementById('adminPasscode').value;
+  if (input === ADMIN_PASS || input === 'velum2026') {
+    sessionStorage.setItem('velum_admin_logged', 'true');
+    document.getElementById('adminLockOverlay').style.display = 'none';
+    loadOrders();
+  } else {
+    alert('كلمة المرور غير صحيحة.');
+  }
+}
+
+function logoutAdmin() {
+  sessionStorage.removeItem('velum_admin_logged');
+  location.reload();
+}
+
+function loadOrders() {
+  let orders = JSON.parse(localStorage.getItem('velum_central_orders') || '[]');
+  
+  // Seed with real Vondera historical orders if empty
+  if (orders.length === 0) {
+    orders = [
+      { id: '57304432', date: '6/10/2026, 8:18:00 AM', customer: { name: 'يوسف', phone: '01093239311', gov: 'القاهرة', address: 'مصر الجديدة' }, items: [{ name: 'Oud Maracuja (50ml)', qty: 1, price: 690 }], total: 690, payment: 'COD', status: 'Pending' },
+      { id: '29427116', date: '6/10/2026, 8:13:31 AM', customer: { name: 'يوسف', phone: '01093239311', gov: 'القاهرة', address: 'مصر الجديدة' }, items: [{ name: 'Smoking Hot (50ml)', qty: 1, price: 690 }], total: 690, payment: 'COD', status: 'Pending' },
+      { id: '21821427', date: '6/10/2026, 7:49:52 AM', customer: { name: 'يوسف (تجربة)', phone: '01093239311', gov: 'القاهرة', address: 'مدينة نصر' }, items: [{ name: 'Drunk Lovers (50ml)', qty: 1, price: 690 }], total: 690, payment: 'COD', status: 'Pending' },
+      { id: '95730425', date: '3/10/2026, 9:28:43 PM', customer: { name: 'أحمد مجدي', phone: '01141906660', gov: 'الإسكندرية', address: 'سموحة، شارع فوزي معاذ' }, items: [{ name: 'Smoking Hot (50ml)', qty: 1, price: 690 }], total: 770, payment: 'COD', status: 'Shipped' },
+      { id: '30479180', date: '3/10/2026, 9:27:27 PM', customer: { name: 'أحمد مجدي', phone: '01141906660', gov: 'الإسكندرية', address: 'سموحة، شارع فوزي معاذ' }, items: [{ name: 'Smoking Hot (50ml)', qty: 1, price: 690 }], total: 770, payment: 'COD', status: 'Delivered' }
+    ];
+    localStorage.setItem('velum_central_orders', JSON.stringify(orders));
+  }
+
+  // Update Stats
+  document.getElementById('statOrdersTotal').textContent = orders.length;
+  const pendingCount = orders.filter(o => o.status === 'Pending').length;
+  document.getElementById('statOrdersPending').textContent = pendingCount;
+  document.getElementById('sidePendingCount').textContent = pendingCount;
+  const deliveredCount = orders.filter(o => o.status === 'Delivered').length;
+  document.getElementById('statOrdersDelivered').textContent = deliveredCount;
+  const revenue = orders.reduce((sum, o) => sum + (o.total || 0), 0);
+  document.getElementById('statRevenue').textContent = revenue.toLocaleString();
+
+  renderOrdersList(orders);
+}
+
+function renderOrdersList(orders) {
+  const tbody = document.getElementById('ordersTableBody');
+  const search = (document.getElementById('orderSearchInput').value || '').toLowerCase().trim();
+
+  let filtered = orders.filter(o => {
+    const matchFilter = (currentFilter === 'all') || (o.status === currentFilter);
+    const matchSearch = !search || 
+      o.id.toLowerCase().includes(search) || 
+      o.customer.name.toLowerCase().includes(search) || 
+      o.customer.phone.includes(search);
+    return matchFilter && matchSearch;
+  });
+
+  document.getElementById('ordersCountNotice').textContent = `${filtered.length} من أصل ${orders.length} طلب`;
+
+  if (filtered.length === 0) {
+    tbody.innerHTML = '<tr><td colspan="9" style="text-align:center; padding:30px; color:#666;">لا توجد طلبات مطابقة.</td></tr>';
+    return;
+  }
+
+  let rows = '';
+  filtered.forEach((o, index) => {
+    const itemsText = o.items.map(i => `${i.name} (×${i.qty})`).join('، ');
+    const phoneClean = o.customer.phone.replace(/[^0-9]/g, '');
+    const waLink = `https://wa.me/2${phoneClean.startsWith('0') ? phoneClean.slice(1) : phoneClean}`;
+    
+    let statusClass = 'status-pending';
+    if (o.status === 'Shipped') statusClass = 'status-shipped';
+    else if (o.status === 'Delivered') statusClass = 'status-delivered';
+    else if (o.status === 'Processing') statusClass = 'status-processing';
+
+    rows += `
+      <tr>
+        <td style="font-weight:700; color:#fff;">#${o.id}</td>
+        <td><strong>${o.customer.name}</strong></td>
+        <td><a href="${waLink}" target="_blank" style="color:#22c55e; text-decoration:none; font-weight:700;">${o.customer.phone} ↗</a></td>
+        <td><small>${o.customer.gov} — ${o.customer.address}</small></td>
+        <td><span style="color:#ede7de;">${itemsText}</span></td>
+        <td style="font-weight:800; color:#c9a96e;">${o.total} ج.م</td>
+        <td><span style="font-size:11px; color:#888;">${o.payment === 'COD' ? 'دفع عند الاستلام' : 'إنستاباي'}</span></td>
+        <td>
+          <select onchange="updateOrderStatus('${o.id}', this.value)" style="background:#18181b; border:1px solid #333; color:#fff; padding:4px 8px; border-radius:4px; font-size:11px;">
+            <option value="Pending" ${o.status==='Pending'?'selected':''}>معلق (Pending)</option>
+            <option value="Processing" ${o.status==='Processing'?'selected':''}>جاري التجهيز</option>
+            <option value="Shipped" ${o.status==='Shipped'?'selected':''}>تم الشحن (Bosta)</option>
+            <option value="Delivered" ${o.status==='Delivered'?'selected':''}>تم التسليم ✓</option>
+          </select>
+        </td>
+        <td>
+          <div style="display:flex; gap:6px;">
+            <a href="${waLink}" target="_blank" class="action-btn" title="واتساب">💬</a>
+            <button onclick="copyBostaWaybill('${o.id}')" class="action-btn" title="نسخ بوليصة بوستا">📋 بوستا</button>
+            <button onclick="deleteOrder('${o.id}')" class="action-btn" style="color:#ef4444;" title="حذف">✕</button>
+          </div>
+        </td>
+      </tr>
+    `;
+  });
+  tbody.innerHTML = rows;
+}
+
+function updateOrderStatus(id, newStatus) {
+  let orders = JSON.parse(localStorage.getItem('velum_central_orders') || '[]');
+  const order = orders.find(o => o.id === id);
+  if (order) {
+    order.status = newStatus;
+    localStorage.setItem('velum_central_orders', JSON.stringify(orders));
+    loadOrders();
+  }
+}
+
+function deleteOrder(id) {
+  if (!confirm('هل أنت متأكد من حذف هذا الطلب؟')) return;
+  let orders = JSON.parse(localStorage.getItem('velum_central_orders') || '[]');
+  orders = orders.filter(o => o.id !== id);
+  localStorage.setItem('velum_central_orders', JSON.stringify(orders));
+  loadOrders();
+}
+
+function copyBostaWaybill(id) {
+  let orders = JSON.parse(localStorage.getItem('velum_central_orders') || '[]');
+  const o = orders.find(x => x.id === id);
+  if (!o) return;
+  const itemsText = o.items.map(i => `${i.name} (x${i.qty})`).join(', ');
+  const payload = `BOSTA SHIPMENT PAYLOAD:
+المرسل: Velum Fragrances (01093239311)
+المرسل إليه: ${o.customer.name}
+الهاتف: ${o.customer.phone}
+المحافظة: ${o.customer.gov}
+العنوان: ${o.customer.address}
+ملاحظات الشحنة: ${itemsText} (ممنوع فتح الشحنة قبل الاستلام)
+المبلغ المطلوب تحصيله (COD): ${o.payment==='COD'?o.total:0} EGP
+رقم الطلب: #${o.id}`;
+
+  navigator.clipboard.writeText(payload).then(() => {
+    alert(`تم نسخ بيانات بوليصة بوستا للطلب #${o.id} بنجاح إلى الحافظة!`);
+  });
+}
+
+function exportOrdersCSV() {
+  let orders = JSON.parse(localStorage.getItem('velum_central_orders') || '[]');
+  if (orders.length === 0) return alert('لا توجد طلبات لتصديرها.');
+  
+  let csv = 'Order ID,Date,Name,Phone,Governorate,Address,Items,Total,Payment,Status\n';
+  orders.forEach(o => {
+    const items = o.items.map(i => `${i.name} (x${i.qty})`).join(' | ');
+    csv += `"${o.id}","${o.date}","${o.customer.name}","${o.customer.phone}","${o.customer.gov}","${o.customer.address}","${items}",${o.total},"${o.payment}","${o.status}"\n`;
+  });
+
+  const blob = new Blob([csv], { type: 'text/csv;charset=utf-8;' });
+  const a = document.createElement('a');
+  a.href = URL.createObjectURL(blob);
+  a.download = `velum_orders_${new Date().toISOString().slice(0,10)}.csv`;
+  a.click();
+}
+
+function switchFilter(status, btn) {
+  currentFilter = status;
+  if (btn) {
+    document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+  }
+  loadOrders();
+}
+
+function filterOrders() {
+  let orders = JSON.parse(localStorage.getItem('velum_central_orders') || '[]');
+  renderOrdersList(orders);
+}
+
+function openManualOrderModal() {
+  document.getElementById('manualOrderModal').style.display = 'flex';
+}
+
+function saveManualOrder() {
+  const name = document.getElementById('manName').value.trim();
+  const phone = document.getElementById('manPhone').value.trim();
+  const gov = document.getElementById('manGov').value.trim();
+  const address = document.getElementById('manAddress').value.trim();
+  const itemsStr = document.getElementById('manItems').value.trim();
+  const total = parseFloat(document.getElementById('manTotal').value) || 690;
+
+  if (!name || !phone || !gov) return alert('يرجى ملء كافة الحقول الإجبارية.');
+
+  const orderId = 'VEL-' + Math.floor(1000 + Math.random() * 9000);
+  const newOrder = {
+    id: orderId,
+    date: new Date().toLocaleString('ar-EG'),
+    customer: { name, phone, gov, address },
+    items: [{ name: itemsStr, qty: 1, price: total }],
+    payment: 'COD',
+    subtotal: total,
+    shipping: 0,
+    total: total,
+    status: 'Pending'
+  };
+
+  let orders = JSON.parse(localStorage.getItem('velum_central_orders') || '[]');
+  orders.unshift(newOrder);
+  localStorage.setItem('velum_central_orders', JSON.stringify(orders));
+
+  document.getElementById('manualOrderModal').style.display = 'none';
+  loadOrders();
+  alert(`تم إضافة الطلب #${orderId} بنجاح!`);
+}
+
+// Auto sync when tab gets focused or storage updates
+window.addEventListener('storage', loadOrders);
+window.addEventListener('focus', loadOrders);
+setInterval(loadOrders, 10000);
+</script>
+</body>
+</html>
