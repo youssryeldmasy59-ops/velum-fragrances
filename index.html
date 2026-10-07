@@ -7,6 +7,7 @@
   <link rel="icon" type="image/webp" href="https://cdn.vondera.app/stores/m2YjlfvGkHgUUlfXpywuC0x1pXX2/gallery/e4ac46af-462d-44ec-9bfe-5f164875e66f.webp">
   <style>
     
+
   @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;800;900&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Syne:wght@700;800&display=swap');
 
   :root {
@@ -968,6 +969,1098 @@
   }
 
 
+
+/* HERO SLIDER STYLES */
+
+.velum-hero-slider {
+  position: relative;
+  width: 100%;
+  height: 82vh;
+  min-height: 560px;
+  max-height: 820px;
+  overflow: hidden;
+  background: #000000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  touch-action: pan-y;
+}
+.velum-slides {
+  position: absolute;
+  inset: 0;
+}
+.velum-slide {
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: center center;
+  opacity: 0;
+  transition: opacity 1s cubic-bezier(0.4, 0, 0.2, 1), transform 6s cubic-bezier(0.25, 1, 0.5, 1);
+  transform: scale(1.05);
+  pointer-events: none;
+}
+.velum-slide.active {
+  opacity: 1;
+  transform: scale(1);
+  pointer-events: auto;
+}
+.velum-slide-caption {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  font-size: 10px;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+  color: #ede7de;
+  font-weight: 700;
+  background: rgba(0, 0, 0, 0.65);
+  padding: 4px 10px;
+  border-radius: 4px;
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(140, 18, 18, 0.4);
+}
+.velum-hero-overlay {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at center, rgba(0,0,0,0.3) 0%, rgba(0,0,0,0.7) 65%, rgba(0,0,0,0.92) 100%),
+              linear-gradient(180deg, rgba(0,0,0,0.4) 0%, transparent 40%, rgba(0,0,0,0.85) 100%);
+  pointer-events: none;
+}
+.velum-hero-content {
+  position: relative;
+  z-index: 10;
+  text-align: center;
+  padding: 0 16px;
+  max-width: 860px;
+}
+.velum-hero-badge {
+  display: inline-block;
+  font-size: 10.5px;
+  letter-spacing: 3.5px;
+  color: #c9a96e;
+  text-transform: uppercase;
+  font-weight: 700;
+  margin-bottom: 14px;
+  padding: 4px 16px;
+  border: 1px solid rgba(201, 169, 110, 0.4);
+  background: rgba(0, 0, 0, 0.55);
+  backdrop-filter: blur(8px);
+  border-radius: 20px;
+}
+.velum-hero-headline {
+  font-size: clamp(26px, 5.5vw, 60px);
+  font-weight: 900;
+  letter-spacing: 3px;
+  color: #ffffff;
+  margin: 0 0 12px 0;
+  text-transform: uppercase;
+  text-shadow: 0 4px 20px rgba(0, 0, 0, 0.9);
+  line-height: 1.22;
+  font-family: 'Cinzel', serif;
+}
+.velum-light-text {
+  color: #ffffff;
+  display: inline-block;
+}
+.velum-noise-text {
+  color: #8c1212;
+  display: inline-block;
+  font-weight: 900;
+  text-shadow: 0 4px 25px rgba(140, 18, 18, 0.95);
+}
+.velum-hero-sub {
+  font-size: clamp(13px, 2vw, 16px);
+  color: #ede7de;
+  letter-spacing: 4px;
+  margin: 0 0 26px 0;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+.velum-hero-cta-group {
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-bottom: 20px;
+}
+.velum-btn-primary {
+  display: inline-block;
+  background: #8c1212;
+  color: #ffffff;
+  font-size: 11.5px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  padding: 13px 30px;
+  border-radius: 6px;
+  text-decoration: none;
+  box-shadow: 0 6px 20px rgba(140, 18, 18, 0.5);
+  transition: all 0.3s ease;
+  border: 1px solid #8c1212;
+}
+.velum-btn-secondary {
+  display: inline-block;
+  background: rgba(0, 0, 0, 0.55);
+  color: #ede7de;
+  font-size: 11.5px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  padding: 13px 30px;
+  border-radius: 6px;
+  text-decoration: none;
+  border: 1px solid rgba(237, 231, 222, 0.35);
+  backdrop-filter: blur(8px);
+  transition: all 0.3s ease;
+}
+.velum-hero-promo {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 11.5px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  color: #ffffff;
+  background: rgba(140, 18, 18, 0.4);
+  border: 1px solid #8c1212;
+  padding: 7px 18px;
+  border-radius: 20px;
+  backdrop-filter: blur(8px);
+}
+.velum-promo-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #25d366;
+  box-shadow: 0 0 8px #25d366;
+}
+.velum-dots {
+  position: absolute;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 8px;
+  z-index: 10;
+}
+.velum-dot {
+  width: 28px;
+  height: 4px;
+  background: rgba(255, 255, 255, 0.25);
+  border-radius: 2px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+.velum-dot.active {
+  background: #8c1212;
+  width: 42px;
+  box-shadow: 0 0 10px rgba(140, 18, 18, 0.8);
+}
+.velum-nav-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(0, 0, 0, 0.4);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: #ffffff;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 24px;
+  cursor: pointer;
+  z-index: 10;
+  backdrop-filter: blur(6px);
+  transition: all 0.3s ease;
+}
+.velum-nav-btn.prev { left: 16px; }
+.velum-nav-btn.next { right: 16px; }
+
+/* MOBILE-FIRST OVERRIDES */
+@media (max-width: 768px) {
+  .velum-hero-slider {
+    height: 72vh;
+    min-height: 470px;
+  }
+  .velum-nav-btn {
+    display: none; /* Hide arrow clutter on mobile */
+  }
+  .velum-hero-content {
+    padding: 0 14px;
+  }
+  .velum-hero-headline {
+    font-size: 27px !important;
+    letter-spacing: 2px !important;
+    margin-bottom: 10px !important;
+  }
+  .velum-hero-sub {
+    font-size: 13px !important;
+    letter-spacing: 3px !important;
+    margin-bottom: 18px !important;
+  }
+  .velum-hero-cta-group {
+    display: flex;
+    flex-direction: row;
+    gap: 8px;
+    margin-bottom: 14px;
+  }
+  .velum-btn-primary, .velum-btn-secondary {
+    flex: 1 1 45%;
+    padding: 12px 10px !important;
+    font-size: 10.5px !important;
+    letter-spacing: 1px !important;
+    text-align: center;
+  }
+  .velum-hero-promo {
+    font-size: 10px !important;
+    letter-spacing: 1px !important;
+    padding: 6px 12px !important;
+  }
+  .velum-slide-caption {
+    top: 14px;
+    right: 14px;
+    font-size: 8.5px;
+    letter-spacing: 1.5px;
+  }
+  .velum-dots {
+    bottom: 12px;
+  }
+  .velum-dot {
+    width: 20px;
+    height: 3px;
+  }
+  .velum-dot.active {
+    width: 30px;
+  }
+}
+
+
+/* INSTAGRAM ARCHIVE STYLES */
+.velum-curated-wrap {
+  background: #000000 !important;
+  padding: 60px 0 !important;
+  color: #ede7de !important;
+  border-top: 1px solid #1a1a1a !important;
+  border-bottom: 1px solid #1a1a1a !important;
+  overflow: hidden !important;
+}
+
+.velum-curated-header {
+  text-align: center !important;
+  max-width: 800px !important;
+  margin: 0 auto 35px auto !important;
+  padding: 0 20px !important;
+}
+
+.velum-curated-tag {
+  display: inline-block !important;
+  font-family: var(--velum-font-heading, 'Cinzel', serif) !important;
+  font-size: 11px !important;
+  letter-spacing: 3px !important;
+  color: #8c1212 !important;
+  text-transform: uppercase !important;
+  margin-bottom: 10px !important;
+  font-weight: 700 !important;
+}
+
+.velum-curated-title {
+  font-family: var(--velum-font-heading, 'Cinzel', serif) !important;
+  font-size: 26px !important;
+  letter-spacing: 2px !important;
+  color: #ffffff !important;
+  margin: 0 0 10px 0 !important;
+  font-weight: 700 !important;
+  text-transform: uppercase !important;
+}
+
+.velum-curated-sub {
+  font-family: var(--velum-font-body, 'Plus Jakarta Sans', sans-serif) !important;
+  font-size: 13.5px !important;
+  color: #a89f91 !important;
+  line-height: 1.5 !important;
+  margin: 0 !important;
+}
+
+.velum-curated-container {
+  max-width: 1400px !important;
+  margin: 0 auto !important;
+  overflow-x: auto !important;
+  -webkit-overflow-scrolling: touch !important;
+  scrollbar-width: none !important;
+  padding: 10px 24px 20px 24px !important;
+}
+
+.velum-curated-container::-webkit-scrollbar {
+  display: none !important;
+}
+
+.velum-curated-track {
+  display: flex !important;
+  gap: 16px !important;
+  width: max-content !important;
+  margin: 0 auto !important;
+}
+
+.velum-ig-card {
+  position: relative !important;
+  width: 270px !important;
+  height: 380px !important;
+  border-radius: 14px !important;
+  overflow: hidden !important;
+  background: #0b0505 !important;
+  border: 1px solid rgba(255, 255, 255, 0.08) !important;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.7) !important;
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.4s ease, box-shadow 0.4s ease !important;
+  flex-shrink: 0 !important;
+}
+
+.velum-ig-card:hover {
+  transform: translateY(-5px) !important;
+  border-color: #8c1212 !important;
+  box-shadow: 0 12px 32px rgba(140, 18, 18, 0.4) !important;
+}
+
+.velum-ig-card img {
+  position: absolute !important;
+  inset: 0 !important;
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: cover !important;
+  display: block !important;
+  pointer-events: none !important;
+  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1) !important;
+}
+
+.velum-ig-card:hover img {
+  transform: scale(1.07) !important;
+}
+
+.velum-ig-cam-icon {
+  position: absolute !important;
+  top: 14px !important;
+  right: 14px !important;
+  width: 32px !important;
+  height: 32px !important;
+  background: rgba(0, 0, 0, 0.65) !important;
+  backdrop-filter: blur(8px) !important;
+  -webkit-backdrop-filter: blur(8px) !important;
+  border: 1px solid rgba(255, 255, 255, 0.16) !important;
+  border-radius: 50% !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  color: #f0f0f0 !important;
+  z-index: 3 !important;
+  pointer-events: none !important;
+  transition: all 0.3s ease !important;
+}
+
+.velum-ig-card:hover .velum-ig-cam-icon {
+  background: #8c1212 !important;
+  border-color: #8c1212 !important;
+  color: #ffffff !important;
+  transform: scale(1.08) !important;
+}
+
+.velum-ig-overlay {
+  position: absolute !important;
+  inset: 0 !important;
+  background: linear-gradient(180deg, rgba(0,0,0,0.05) 0%, rgba(0,0,0,0.3) 45%, rgba(0,0,0,0.92) 100%) !important;
+  display: flex !important;
+  flex-direction: column !important;
+  justify-content: flex-end !important;
+  padding: 18px 16px !important;
+  text-align: left !important;
+  pointer-events: auto !important;
+  z-index: 2 !important;
+}
+
+.velum-ig-badge {
+  align-self: flex-start !important;
+  font-family: var(--velum-font-heading, 'Cinzel', serif) !important;
+  font-size: 9.5px !important;
+  letter-spacing: 1.5px !important;
+  font-weight: 700 !important;
+  background: rgba(140, 18, 18, 0.9) !important;
+  color: #ffffff !important;
+  padding: 3px 8px !important;
+  border-radius: 4px !important;
+  margin-bottom: 6px !important;
+  text-transform: uppercase !important;
+}
+
+.velum-ig-overlay h4 {
+  font-family: var(--velum-font-heading, 'Cinzel', serif) !important;
+  font-size: 15px !important;
+  font-weight: 700 !important;
+  letter-spacing: 1.5px !important;
+  color: #ffffff !important;
+  margin: 0 0 3px 0 !important;
+}
+
+.velum-ig-desc {
+  font-family: var(--velum-font-body, 'Plus Jakarta Sans', sans-serif) !important;
+  font-size: 11.5px !important;
+  color: #d1c7b8 !important;
+  margin: 0 0 10px 0 !important;
+  display: block !important;
+  font-weight: 300 !important;
+}
+
+.velum-ig-btn {
+  display: inline-block !important;
+  align-self: flex-start !important;
+  font-family: var(--velum-font-heading, 'Cinzel', serif) !important;
+  font-size: 11px !important;
+  font-weight: 700 !important;
+  letter-spacing: 1px !important;
+  color: #ffffff !important;
+  background: rgba(140, 18, 18, 0.85) !important;
+  border: 1px solid #a81616 !important;
+  padding: 7px 16px !important;
+  border-radius: 6px !important;
+  text-decoration: none !important;
+  transition: all 0.25s ease !important;
+}
+
+.velum-ig-btn:hover {
+  background: #a81616 !important;
+  box-shadow: 0 0 14px rgba(184, 25, 25, 0.5) !important;
+}
+
+.velum-curated-footer {
+  text-align: center !important;
+  margin-top: 35px !important;
+  padding: 0 16px !important;
+}
+
+.velum-ig-follow-btn {
+  display: inline-block !important;
+  padding: 12px 28px !important;
+  background: #080404 !important;
+  border: 1px solid #8c1212 !important;
+  color: #ede7de !important;
+  font-family: var(--velum-font-heading, 'Cinzel', serif) !important;
+  font-size: 12px !important;
+  font-weight: 700 !important;
+  letter-spacing: 2px !important;
+  text-decoration: none !important;
+  border-radius: 30px !important;
+  transition: all 0.3s ease !important;
+}
+
+.velum-ig-follow-btn:hover {
+  background: #8c1212 !important;
+  color: #ffffff !important;
+  box-shadow: 0 0 20px rgba(140, 18, 18, 0.5) !important;
+}
+
+@media (max-width: 768px) {
+  .velum-curated-wrap {
+    padding: 38px 0 !important;
+  }
+  .velum-curated-header {
+    margin-bottom: 20px !important;
+    padding: 0 18px !important;
+  }
+  .velum-curated-title {
+    font-size: 19px !important;
+    letter-spacing: 1.5px !important;
+  }
+  .velum-curated-sub {
+    font-size: 12.5px !important;
+    line-height: 1.5 !important;
+  }
+  .velum-curated-container {
+    overflow-x: auto !important;
+    scroll-snap-type: x mandatory !important;
+    -webkit-overflow-scrolling: touch !important;
+    scroll-padding: 0 16px !important;
+    padding: 8px 16px 20px 16px !important;
+    overscroll-behavior-x: contain !important;
+  }
+  .velum-curated-track {
+    gap: 12px !important;
+    margin: 0 !important;
+  }
+  .velum-ig-card {
+    width: 74vw !important;
+    max-width: 265px !important;
+    height: 360px !important;
+    scroll-snap-align: start !important;
+    border-radius: 12px !important;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.8) !important;
+  }
+  .velum-ig-cam-icon {
+    top: 10px !important;
+    right: 10px !important;
+    width: 28px !important;
+    height: 28px !important;
+  }
+  .velum-ig-cam-icon svg {
+    width: 13px !important;
+    height: 13px !important;
+  }
+  .velum-ig-overlay {
+    padding: 14px 12px !important;
+  }
+  .velum-ig-badge {
+    font-size: 8.5px !important;
+    padding: 2px 6px !important;
+  }
+  .velum-ig-overlay h4 {
+    font-size: 13.5px !important;
+  }
+  .velum-ig-desc {
+    font-size: 11px !important;
+    margin-bottom: 8px !important;
+  }
+  .velum-ig-btn {
+    font-size: 10.5px !important;
+    padding: 6px 12px !important;
+  }
+  .velum-curated-footer {
+    margin-top: 24px !important;
+  }
+  .velum-ig-follow-btn {
+    width: calc(100% - 32px) !important;
+    max-width: 320px !important;
+    padding: 11px 16px !important;
+    font-size: 11px !important;
+  }
+}
+
+/* BRAND PILLARS & FAQ ACCORDION STYLES */
+.velum-pillars-wrap {
+  background: #000000;
+  padding: 50px 20px;
+  color: #ede7de;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  border-top: 1px solid rgba(140, 18, 18, 0.3);
+}
+.velum-pillars-header {
+  text-align: center;
+  max-width: 800px;
+  margin: 0 auto 35px auto;
+  padding: 0 16px;
+}
+.velum-pill-tag {
+  display: inline-block;
+  font-size: 10px;
+  letter-spacing: 4px;
+  color: #c9a96e;
+  text-transform: uppercase;
+  margin-bottom: 8px;
+  font-weight: 700;
+}
+.velum-pill-title {
+  font-size: 26px;
+  letter-spacing: 2px;
+  color: #ffffff;
+  margin: 0 0 8px 0;
+  font-weight: 800;
+  text-transform: uppercase;
+}
+.velum-pill-sub {
+  font-size: 13.5px;
+  color: #a89f91;
+  margin: 0;
+}
+.velum-pillars-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+.velum-card {
+  background: #080404;
+  border: 1px solid rgba(140, 18, 18, 0.25);
+  border-radius: 10px;
+  padding: 24px 20px;
+}
+.velum-card-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+.velum-card-icon {
+  font-size: 12px;
+  font-weight: 800;
+  color: #8c1212;
+  background: rgba(140, 18, 18, 0.15);
+  padding: 3px 8px;
+  border-radius: 4px;
+}
+.velum-card h3 {
+  font-size: 15px;
+  letter-spacing: 1px;
+  color: #ffffff;
+  margin: 0;
+  font-weight: 700;
+}
+.velum-card p {
+  font-size: 12.5px;
+  color: #a89f91;
+  line-height: 1.6;
+  margin: 0;
+}
+
+@media (max-width: 768px) {
+  .velum-pillars-wrap {
+    padding: 35px 16px !important;
+  }
+  .velum-pill-title {
+    font-size: 20px !important;
+  }
+  .velum-pillars-grid {
+    grid-template-columns: 1fr !important;
+    gap: 10px !important;
+  }
+  .velum-card {
+    padding: 16px 14px !important;
+  }
+  .velum-card p {
+    font-size: 12px !important;
+  }
+}
+.velum-policy-banner {
+  max-width: 800px;
+  margin: 36px auto 0 auto;
+  background: #080404;
+  border: 1px solid rgba(140, 18, 18, 0.4);
+  border-radius: 12px;
+  padding: 26px 22px;
+  text-align: center;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.6);
+  position: relative;
+  overflow: hidden;
+}
+.velum-policy-banner::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, #8c1212, transparent);
+}
+.velum-policy-banner-badge {
+  display: inline-block;
+  font-family: var(--velum-font-heading, 'Cinzel', serif);
+  font-size: 10px;
+  letter-spacing: 2.5px;
+  color: #8c1212;
+  font-weight: 700;
+  text-transform: uppercase;
+  margin-bottom: 8px;
+}
+.velum-policy-banner h3 {
+  font-family: var(--velum-font-heading, 'Cinzel', serif);
+  font-size: 19px;
+  letter-spacing: 1.5px;
+  color: #ffffff;
+  margin: 0 0 10px 0;
+  font-weight: 700;
+}
+.velum-policy-banner p {
+  font-family: var(--velum-font-body, 'Plus Jakarta Sans', sans-serif);
+  font-size: 13.5px;
+  color: #c4b9ac;
+  line-height: 1.65;
+  max-width: 660px;
+  margin: 0 auto 16px auto;
+}
+.velum-policy-banner p strong {
+  color: #ffffff;
+  font-weight: 700;
+  text-decoration: underline;
+  text-decoration-color: #8c1212;
+  text-underline-offset: 3px;
+}
+.velum-policy-banner-btn {
+  display: inline-block;
+  font-family: var(--velum-font-heading, 'Cinzel', serif);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  color: #ffffff;
+  background: rgba(140, 18, 18, 0.9);
+  border: 1px solid #8c1212;
+  padding: 8px 22px;
+  border-radius: 6px;
+  text-decoration: none;
+  transition: all 0.25s ease;
+  text-transform: uppercase;
+}
+.velum-policy-banner-btn:hover {
+  background: #a81616;
+  box-shadow: 0 0 16px rgba(168, 22, 22, 0.5);
+  transform: translateY(-2px);
+}
+@media (max-width: 768px) {
+  .velum-policy-banner {
+    margin: 24px 0 0 0 !important;
+    padding: 20px 14px !important;
+  }
+  .velum-policy-banner h3 {
+    font-size: 16px !important;
+  }
+  .velum-policy-banner p {
+    font-size: 12.5px !important;
+  }
+  .velum-policy-banner-btn {
+    width: 100% !important;
+    padding: 10px 14px !important;
+    font-size: 10.5px !important;
+  }
+}
+/* VELUM 4-PILLAR TRUST & SECURITY STRIP */
+.velum-trust-strip {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 14px;
+  max-width: 1200px;
+  margin: 36px auto 0 auto;
+}
+.velum-trust-card {
+  background: #080404;
+  border: 1px solid rgba(140, 18, 18, 0.35);
+  border-radius: 8px;
+  padding: 16px 14px;
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  transition: all 0.25s ease;
+}
+.velum-trust-card:hover {
+  border-color: rgba(140, 18, 18, 0.7);
+  box-shadow: 0 4px 18px rgba(140, 18, 18, 0.15);
+}
+.velum-trust-icon {
+  background: rgba(140, 18, 18, 0.18);
+  border: 1px solid rgba(140, 18, 18, 0.4);
+  border-radius: 6px;
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+.velum-trust-text h4 {
+  font-family: var(--velum-font-heading, 'Cinzel', serif);
+  font-size: 11.5px;
+  letter-spacing: 1.2px;
+  color: #ffffff;
+  margin: 0 0 4px 0;
+  font-weight: 700;
+}
+.velum-trust-text p {
+  font-family: var(--velum-font-body, 'Plus Jakarta Sans', sans-serif);
+  font-size: 11px;
+  line-height: 1.45;
+  color: #a89f91;
+  margin: 0;
+}
+@media (max-width: 768px) {
+  .velum-trust-strip {
+    grid-template-columns: 1fr 1fr !important;
+    gap: 10px !important;
+    margin-top: 24px !important;
+  }
+  .velum-trust-card {
+    padding: 12px 10px !important;
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    gap: 8px !important;
+  }
+  .velum-trust-text h4 {
+    font-size: 10px !important;
+  }
+  .velum-trust-text p {
+    font-size: 9.5px !important;
+    line-height: 1.4 !important;
+  }
+}
+
+
+/* ==========================================================
+   VELUM FAQ ACCORDION - ULTRA LUXURY BOX CARDS (PC & MOBILE)
+   ========================================================== */
+.velum-faq-section {
+  max-width: 860px !important;
+  margin: 55px auto 25px auto !important;
+  padding: 0 16px !important;
+  box-sizing: border-box !important;
+  width: 100% !important;
+}
+
+.velum-faq-header {
+  text-align: center !important;
+  margin-bottom: 30px !important;
+  padding: 0 12px !important;
+}
+
+.velum-faq-header .velum-pill-tag {
+  display: inline-block !important;
+  font-size: 10.5px !important;
+  letter-spacing: 3.5px !important;
+  color: #c9a96e !important;
+  font-weight: 700 !important;
+  text-transform: uppercase !important;
+  margin-bottom: 10px !important;
+}
+
+.velum-faq-title {
+  font-size: 25px !important;
+  letter-spacing: 2px !important;
+  color: #ffffff !important;
+  font-weight: 800 !important;
+  text-transform: uppercase !important;
+  margin: 0 0 10px 0 !important;
+  font-family: var(--velum-font-heading, 'Cinzel', serif) !important;
+}
+
+.velum-faq-sub {
+  font-size: 13.5px !important;
+  color: #a89f91 !important;
+  margin: 0 !important;
+  line-height: 1.5 !important;
+  font-family: var(--velum-font-body, 'Plus Jakarta Sans', sans-serif) !important;
+}
+
+.velum-faq-list {
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 14px !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  list-style: none !important;
+}
+
+/* THE DISTINCT LUXURY CARD (الخانة) */
+details.velum-faq-item,
+.velum-faq-item {
+  background: #0d0707 !important;
+  border: 1px solid rgba(140, 18, 18, 0.45) !important;
+  border-radius: 12px !important;
+  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.7), inset 0 1px 0 rgba(255, 255, 255, 0.04) !important;
+  transition: border-color 0.28s ease, box-shadow 0.28s ease, background 0.28s ease !important;
+  position: relative !important;
+  display: block !important;
+  margin-bottom: 0 !important;
+  overflow: visible !important;
+}
+
+details.velum-faq-item:hover,
+.velum-faq-item:hover {
+  border-color: rgba(180, 24, 24, 0.75) !important;
+  box-shadow: 0 6px 24px rgba(140, 18, 18, 0.22) !important;
+}
+
+details.velum-faq-item[open],
+details.velum-faq-item.active,
+.velum-faq-item[open],
+.velum-faq-item.active {
+  border-color: #8c1212 !important;
+  background: #120808 !important;
+  box-shadow: 0 8px 30px rgba(140, 18, 18, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.07) !important;
+}
+
+/* SUMMARY / TRIGGER BUTTON (HEADER OF THE CARD) */
+summary.velum-faq-trigger,
+.velum-faq-trigger {
+  width: 100% !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  padding: 18px 22px !important;
+  background: transparent !important;
+  border: none !important;
+  cursor: pointer !important;
+  text-align: left !important;
+  font-family: inherit !important;
+  gap: 16px !important;
+  outline: none !important;
+  -webkit-tap-highlight-color: transparent !important;
+  box-sizing: border-box !important;
+  list-style: none !important;
+  user-select: none !important;
+  -webkit-user-select: none !important;
+}
+
+summary.velum-faq-trigger::-webkit-details-marker,
+summary.velum-faq-trigger::marker {
+  display: none !important;
+  content: "" !important;
+}
+
+summary.velum-faq-trigger:hover {
+  background: rgba(140, 18, 18, 0.08) !important;
+}
+
+.velum-faq-q {
+  color: #ffffff !important;
+  font-size: 15.5px !important;
+  font-weight: 700 !important;
+  letter-spacing: 0.3px !important;
+  line-height: 1.45 !important;
+  flex: 1 !important;
+  margin: 0 !important;
+  text-align: left !important;
+  font-family: var(--velum-font-body, 'Plus Jakarta Sans', sans-serif) !important;
+  pointer-events: none !important;
+}
+
+details.velum-faq-item[open] .velum-faq-q,
+details.velum-faq-item.active .velum-faq-q,
+.velum-faq-item[open] .velum-faq-q,
+.velum-faq-item.active .velum-faq-q {
+  color: #fbf7f0 !important;
+}
+
+/* CIRCULAR BURGUNDY ROTATING ICON */
+.velum-faq-icon {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  width: 32px !important;
+  height: 32px !important;
+  border-radius: 50% !important;
+  background: rgba(140, 18, 18, 0.2) !important;
+  border: 1px solid rgba(140, 18, 18, 0.55) !important;
+  color: #c9a96e !important;
+  font-size: 19px !important;
+  font-weight: 400 !important;
+  line-height: 1 !important;
+  flex-shrink: 0 !important;
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), background 0.25s ease, color 0.25s ease, border-color 0.25s ease !important;
+  user-select: none !important;
+  pointer-events: none !important;
+}
+
+details.velum-faq-item[open] .velum-faq-icon,
+details.velum-faq-item.active .velum-faq-icon,
+.velum-faq-item[open] .velum-faq-icon,
+.velum-faq-item.active .velum-faq-icon {
+  transform: rotate(45deg) !important;
+  background: #8c1212 !important;
+  border-color: #8c1212 !important;
+  color: #ffffff !important;
+}
+
+/* ACCORDION ANSWER BODY: GUARANTEED FULL EXPANSION */
+.velum-faq-answer {
+  display: none !important;
+  padding: 0 !important;
+  max-height: none !important;
+  height: auto !important;
+  overflow: visible !important;
+}
+
+details.velum-faq-item[open] .velum-faq-answer,
+details.velum-faq-item.active .velum-faq-answer,
+.velum-faq-item[open] .velum-faq-answer,
+.velum-faq-item.active .velum-faq-answer {
+  display: block !important;
+  padding: 18px 22px 26px 22px !important;
+  border-top: 1px solid rgba(140, 18, 18, 0.3) !important;
+  background: rgba(0, 0, 0, 0.38) !important;
+  color: #ede7de !important;
+  font-size: 14px !important;
+  line-height: 1.7 !important;
+  font-family: var(--velum-font-body, 'Plus Jakarta Sans', sans-serif) !important;
+  max-height: none !important;
+  height: auto !important;
+  overflow: visible !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+  animation: velumFaqFadeIn 0.2s ease-out !important;
+}
+
+@keyframes velumFaqFadeIn {
+  from { opacity: 0; transform: translateY(-4px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.velum-faq-answer p {
+  margin: 0 0 10px 0 !important;
+  color: #ede7de !important;
+  line-height: 1.7 !important;
+  font-size: 14px !important;
+}
+
+.velum-faq-answer p:last-child {
+  margin-bottom: 0 !important;
+}
+
+.velum-faq-answer strong {
+  color: #ffffff !important;
+  font-weight: 700 !important;
+}
+
+/* ==========================================================
+   MOBILE SPECIFIC RULES (HIGH PRIORITY)
+   ========================================================== */
+@media (max-width: 768px) {
+  .velum-faq-section {
+    margin: 38px auto 16px auto !important;
+    padding: 0 12px !important;
+  }
+  .velum-faq-title {
+    font-size: 19px !important;
+    letter-spacing: 1.5px !important;
+  }
+  .velum-faq-sub {
+    font-size: 12.5px !important;
+    line-height: 1.45 !important;
+  }
+  .velum-faq-list {
+    gap: 11px !important;
+  }
+  details.velum-faq-item,
+  .velum-faq-item {
+    border-radius: 10px !important;
+    background: #0e0707 !important;
+    border: 1px solid rgba(140, 18, 18, 0.5) !important;
+    overflow: visible !important;
+  }
+  summary.velum-faq-trigger,
+  .velum-faq-trigger {
+    padding: 15px 16px !important;
+    gap: 12px !important;
+  }
+  .velum-faq-q {
+    font-size: 14px !important;
+    line-height: 1.4 !important;
+  }
+  .velum-faq-icon {
+    width: 28px !important;
+    height: 28px !important;
+    font-size: 16px !important;
+  }
+  details.velum-faq-item[open] .velum-faq-answer,
+  details.velum-faq-item.active .velum-faq-answer,
+  .velum-faq-item[open] .velum-faq-answer,
+  .velum-faq-item.active .velum-faq-answer {
+    padding: 16px 16px 22px 16px !important;
+    font-size: 13px !important;
+    line-height: 1.65 !important;
+    max-height: none !important;
+    height: auto !important;
+    overflow: visible !important;
+    display: block !important;
+  }
+  .velum-faq-answer p {
+    font-size: 13px !important;
+    line-height: 1.65 !important;
+  }
+}
+
   </style>
 </head>
 <body style="background:#000000; color:#ffffff; margin:0; padding:0; font-family:'Plus Jakarta Sans',sans-serif;">
@@ -985,21 +2078,21 @@
 </style>
 
   
-<header class="velum-header" style="background:rgba(0,0,0,0.92); backdrop-filter:blur(12px); border-bottom:1px solid rgba(255,255,255,0.06); position:sticky; top:0; z-index:999; padding:14px 28px; display:flex; align-items:center; justify-content:space-between;">
-  <div style="display:flex; align-items:center; gap:32px;">
+<header class="velum-header" style="background:rgba(0,0,0,0.95); backdrop-filter:blur(12px); border-bottom:1px solid rgba(255,255,255,0.08); position:sticky; top:0; z-index:999; padding:16px 32px; display:flex; align-items:center; justify-content:space-between;">
+  <div style="display:flex; align-items:center; gap:36px;">
     <a href="#" style="display:flex; align-items:center;">
-      <img src="https://cdn.vondera.app/stores/m2YjlfvGkHgUUlfXpywuC0x1pXX2/gallery/e4ac46af-462d-44ec-9bfe-5f164875e66f.webp" alt="VELUM FRAGRANCES" style="height:36px; width:auto; display:block;" />
+      <img src="https://cdn.vondera.app/stores/m2YjlfvGkHgUUlfXpywuC0x1pXX2/gallery/e4ac46af-462d-44ec-9bfe-5f164875e66f.webp" alt="VELUM FRAGRANCES" style="height:34px; width:auto; display:block;" />
     </a>
-    <nav style="display:flex; gap:24px; align-items:center;" class="desktop-nav">
-      <a href="#products-section" style="color:#ede7de; font-size:11px; letter-spacing:2px; text-transform:uppercase; text-decoration:none; font-family:'Cinzel',serif; font-weight:700; transition:color .2s;">Collection</a>
-      <a href="#manifesto-section" style="color:#a89f91; font-size:11px; letter-spacing:2px; text-transform:uppercase; text-decoration:none; font-family:'Cinzel',serif; font-weight:700; transition:color .2s;">Manifesto</a>
-      <a href="#instagram-section" style="color:#a89f91; font-size:11px; letter-spacing:2px; text-transform:uppercase; text-decoration:none; font-family:'Cinzel',serif; font-weight:700; transition:color .2s;">Archive</a>
-      <a href="#faq-section" style="color:#a89f91; font-size:11px; letter-spacing:2px; text-transform:uppercase; text-decoration:none; font-family:'Cinzel',serif; font-weight:700; transition:color .2s;">FAQ</a>
+    <nav style="display:flex; gap:26px; align-items:center;" class="desktop-nav">
+      <a href="#products-section" style="color:#ede7de; font-size:11px; letter-spacing:2px; text-transform:uppercase; text-decoration:none; font-family:'Cinzel',serif; font-weight:700;">Collection</a>
+      <a href="#manifesto-section" style="color:#a89f91; font-size:11px; letter-spacing:2px; text-transform:uppercase; text-decoration:none; font-family:'Cinzel',serif; font-weight:700;">Manifesto</a>
+      <a href="#instagram-section" style="color:#a89f91; font-size:11px; letter-spacing:2px; text-transform:uppercase; text-decoration:none; font-family:'Cinzel',serif; font-weight:700;">Archive</a>
+      <a href="#faq-section" style="color:#a89f91; font-size:11px; letter-spacing:2px; text-transform:uppercase; text-decoration:none; font-family:'Cinzel',serif; font-weight:700;">FAQ</a>
     </nav>
   </div>
   <div style="display:flex; align-items:center; gap:16px;">
-    <button onclick="openAdmin()" style="background:none; border:1px solid rgba(255,255,255,0.1); color:#a89f91; font-family:'Cinzel',serif; font-size:10px; letter-spacing:1.5px; padding:6px 12px; cursor:pointer; text-transform:uppercase; transition:all .2s;">Portal</button>
-    <button onclick="openCart()" style="background:#8c1212; border:none; color:#ffffff; font-family:'Plus Jakarta Sans',sans-serif; font-weight:700; font-size:11px; letter-spacing:1.5px; padding:8px 16px; border-radius:4px; cursor:pointer; display:flex; align-items:center; gap:8px;">
+    <button onclick="openAdmin()" style="background:none; border:1px solid rgba(255,255,255,0.15); color:#a89f91; font-family:'Cinzel',serif; font-size:10px; letter-spacing:1.5px; padding:7px 14px; cursor:pointer; text-transform:uppercase;">Portal</button>
+    <button onclick="openCart()" style="background:#8c1212; border:none; color:#ffffff; font-family:'Plus Jakarta Sans',sans-serif; font-weight:700; font-size:11px; letter-spacing:1.5px; padding:9px 18px; border-radius:4px; cursor:pointer; display:flex; align-items:center; gap:8px;">
       <span>CART</span>
       <span id="header-cart-badge" style="background:#000000; color:#ffffff; padding:2px 7px; border-radius:10px; font-size:10px;">0</span>
     </button>
@@ -1068,42 +2161,42 @@
   <button class="velum-nav-btn next" onclick="nextVelumSlide()" aria-label="Next Slide">›</button>
 </div>
   
-<section id="products-section" style="max-width:1280px; margin:60px auto; padding:0 20px;">
-  <div style="text-align:center; margin-bottom:34px;">
-    <span style="font-family:'Plus Jakarta Sans',sans-serif; font-size:11px; letter-spacing:3px; color:#c9a96e; font-weight:700; text-transform:uppercase; display:block; margin-bottom:8px;">HAND-CRAFTED EXTRAIT DE PARFUM</span>
-    <h2 style="font-family:'Cinzel',serif; font-size:32px; font-weight:800; letter-spacing:2.5px; color:#ffffff; margin:0 0 10px 0; text-transform:uppercase;">THE ESSENCE OF VELUM</h2>
+<section id="products-section" style="max-width:1280px; margin:70px auto; padding:0 24px;">
+  <div style="text-align:center; margin-bottom:36px;">
+    <span style="font-family:'Plus Jakarta Sans',sans-serif; font-size:11.5px; letter-spacing:3.5px; color:#c9a96e; font-weight:700; text-transform:uppercase; display:block; margin-bottom:8px;">HAND-CRAFTED EXTRAIT DE PARFUM</span>
+    <h2 style="font-family:'Cinzel',serif; font-size:34px; font-weight:800; letter-spacing:2.5px; color:#ffffff; margin:0 0 10px 0; text-transform:uppercase;">THE ESSENCE OF VELUM</h2>
     <p style="font-family:'Plus Jakarta Sans',sans-serif; font-size:14px; color:#a89f91; margin:0;">Unified 50ml Luxury Volume &bull; 690 EGP &bull; High Oil Concentration</p>
   </div>
 
   <!-- Vibe Filter Bar -->
-  <div class="velum-vibe-filter-bar" style="display:flex; justify-content:center; gap:10px; margin-bottom:34px; flex-wrap:wrap;">
-    <button type="button" class="velum-vibe-pill active" onclick="filterVibes('all', this)" style="background:#8c1212; color:#ffffff; border:1px solid #8c1212; padding:8px 18px; border-radius:20px; font-family:'Plus Jakarta Sans',sans-serif; font-size:11px; font-weight:700; letter-spacing:1.5px; text-transform:uppercase; cursor:pointer;">✦ ALL SCENTS (9)</button>
-    <button type="button" class="velum-vibe-pill" onclick="filterVibes('bestsellers', this)" style="background:#111; color:#a89f91; border:1px solid #222; padding:8px 18px; border-radius:20px; font-family:'Plus Jakarta Sans',sans-serif; font-size:11px; font-weight:700; letter-spacing:1.5px; text-transform:uppercase; cursor:pointer;">BESTSELLERS</button>
-    <button type="button" class="velum-vibe-pill" onclick="filterVibes('smoky-winter', this)" style="background:#111; color:#a89f91; border:1px solid #222; padding:8px 18px; border-radius:20px; font-family:'Plus Jakarta Sans',sans-serif; font-size:11px; font-weight:700; letter-spacing:1.5px; text-transform:uppercase; cursor:pointer;">SMOKY &amp; WINTER</button>
-    <button type="button" class="velum-vibe-pill" onclick="filterVibes('fresh-crisp', this)" style="background:#111; color:#a89f91; border:1px solid #222; padding:8px 18px; border-radius:20px; font-family:'Plus Jakarta Sans',sans-serif; font-size:11px; font-weight:700; letter-spacing:1.5px; text-transform:uppercase; cursor:pointer;">FRESH &amp; CRISP</button>
-    <button type="button" class="velum-vibe-pill" onclick="filterVibes('exotic-oud', this)" style="background:#111; color:#a89f91; border:1px solid #222; padding:8px 18px; border-radius:20px; font-family:'Plus Jakarta Sans',sans-serif; font-size:11px; font-weight:700; letter-spacing:1.5px; text-transform:uppercase; cursor:pointer;">EXOTIC OUD</button>
+  <div class="velum-vibe-filter-bar" style="display:flex; justify-content:center; gap:10px; margin-bottom:36px; flex-wrap:wrap;">
+    <button type="button" class="velum-vibe-pill active" onclick="filterVibes('all', this)" style="background:#8c1212; color:#ffffff; border:1px solid #8c1212; padding:9px 20px; border-radius:24px; font-family:'Plus Jakarta Sans',sans-serif; font-size:11px; font-weight:700; letter-spacing:1.5px; text-transform:uppercase; cursor:pointer;">✦ ALL SCENTS (9)</button>
+    <button type="button" class="velum-vibe-pill" onclick="filterVibes('bestsellers', this)" style="background:#111; color:#a89f91; border:1px solid #222; padding:9px 20px; border-radius:24px; font-family:'Plus Jakarta Sans',sans-serif; font-size:11px; font-weight:700; letter-spacing:1.5px; text-transform:uppercase; cursor:pointer;">BESTSELLERS</button>
+    <button type="button" class="velum-vibe-pill" onclick="filterVibes('smoky-winter', this)" style="background:#111; color:#a89f91; border:1px solid #222; padding:9px 20px; border-radius:24px; font-family:'Plus Jakarta Sans',sans-serif; font-size:11px; font-weight:700; letter-spacing:1.5px; text-transform:uppercase; cursor:pointer;">SMOKY &amp; WINTER</button>
+    <button type="button" class="velum-vibe-pill" onclick="filterVibes('fresh-crisp', this)" style="background:#111; color:#a89f91; border:1px solid #222; padding:9px 20px; border-radius:24px; font-family:'Plus Jakarta Sans',sans-serif; font-size:11px; font-weight:700; letter-spacing:1.5px; text-transform:uppercase; cursor:pointer;">FRESH &amp; CRISP</button>
+    <button type="button" class="velum-vibe-pill" onclick="filterVibes('exotic-oud', this)" style="background:#111; color:#a89f91; border:1px solid #222; padding:9px 20px; border-radius:24px; font-family:'Plus Jakarta Sans',sans-serif; font-size:11px; font-weight:700; letter-spacing:1.5px; text-transform:uppercase; cursor:pointer;">EXOTIC OUD</button>
   </div>
 
   <!-- 3x3 Grid -->
-  <div id="velumProductsGrid" style="display:grid; grid-template-columns:repeat(auto-fill, minmax(320px, 1fr)); gap:24px;">
+  <div id="velumProductsGrid" style="display:grid; grid-template-columns:repeat(auto-fill, minmax(320px, 1fr)); gap:26px;">
     
     <div class="velum-prod-card" data-vibes="all bestsellers exotic-oud" style="background:#0c0606; border:1px solid rgba(140,18,18,0.3); border-radius:12px; overflow:hidden; display:flex; flex-direction:column; transition:transform .3s ease, border-color .3s ease, box-shadow .3s ease;" onmouseenter="this.style.borderColor='#8c1212'; this.style.boxShadow='0 12px 35px rgba(140,18,18,0.25)';" onmouseleave="this.style.borderColor='rgba(140,18,18,0.3)'; this.style.boxShadow='none';">
-      <div style="position:relative; width:100%; height:320px; background:radial-gradient(ellipse at center, rgba(60,6,6,0.5) 0%, #060202 75%); display:flex; align-items:center; justify-content:center; overflow:hidden;">
-        <span style="position:absolute; top:12px; left:12px; background:rgba(140,18,18,0.85); color:#ffffff; font-family:'Plus Jakarta Sans',sans-serif; font-size:9.5px; font-weight:800; letter-spacing:1.5px; text-transform:uppercase; padding:4px 8px; border-radius:3px; z-index:2;">TOP SELLER</span>
+      <div style="position:relative; width:100%; height:320px; background:radial-gradient(ellipse at center, rgba(70,6,6,0.55) 0%, #060202 75%); display:flex; align-items:center; justify-content:center; overflow:hidden;">
+        <span style="position:absolute; top:12px; left:12px; background:rgba(140,18,18,0.9); color:#ffffff; font-family:'Plus Jakarta Sans',sans-serif; font-size:9.5px; font-weight:800; letter-spacing:1.5px; text-transform:uppercase; padding:4px 8px; border-radius:3px; z-index:2;">TOP SELLER</span>
         <img src="https://cdn.vondera.app/stores/m2YjlfvGkHgUUlfXpywuC0x1pXX2/gallery/16568dbe-1bb3-46a5-aaa9-940a643d1471-thumbnail.webp" alt="Oud Maracuja — Maison Crivelli (50Ml)" style="max-height:270px; max-width:85%; object-fit:contain; filter:drop-shadow(0 15px 30px rgba(0,0,0,0.9)); transition:transform .5s ease;" onmouseenter="this.style.transform='scale(1.05)'" onmouseleave="this.style.transform='scale(1)'" loading="lazy" />
       </div>
-      <div style="padding:20px; flex:1; display:flex; flex-direction:column; justify-content:space-between;">
+      <div style="padding:22px; flex:1; display:flex; flex-direction:column; justify-content:space-between;">
         <div>
-          <span style="font-family:'Plus Jakarta Sans',sans-serif; font-size:10px; color:#c9a96e; letter-spacing:2px; text-transform:uppercase; font-weight:700; display:block; margin-bottom:6px;">Inspired by Maison Crivelli</span>
-          <h3 style="font-family:'Cinzel',serif; font-size:17px; font-weight:700; color:#ffffff; margin:0 0 8px 0; text-transform:uppercase; letter-spacing:1px; line-height:1.3;">Oud Maracuja — Maison Crivelli (50Ml)</h3>
-          <p style="font-family:'Plus Jakarta Sans',sans-serif; font-size:11.5px; color:#a89f91; margin:0 0 14px 0; line-height:1.5;">Passion Fruit • Dark Leather • Rich Oud</p>
+          <span style="font-family:'Plus Jakarta Sans',sans-serif; font-size:10.5px; color:#c9a96e; letter-spacing:2px; text-transform:uppercase; font-weight:700; display:block; margin-bottom:6px;">Inspired by Maison Crivelli</span>
+          <h3 style="font-family:'Cinzel',serif; font-size:18px; font-weight:700; color:#ffffff; margin:0 0 8px 0; text-transform:uppercase; letter-spacing:1px; line-height:1.3;">Oud Maracuja — Maison Crivelli (50Ml)</h3>
+          <p style="font-family:'Plus Jakarta Sans',sans-serif; font-size:12px; color:#a89f91; margin:0 0 16px 0; line-height:1.5;">Passion Fruit • Dark Leather • Rich Oud</p>
         </div>
         <div>
-          <div style="display:flex; justify-content:space-between; align-items:baseline; margin-bottom:14px; border-top:1px solid rgba(255,255,255,0.06); padding-top:12px;">
+          <div style="display:flex; justify-content:space-between; align-items:baseline; margin-bottom:14px; border-top:1px solid rgba(255,255,255,0.06); padding-top:14px;">
             <span style="font-family:'Plus Jakarta Sans',sans-serif; font-size:11px; color:#666; letter-spacing:1px;">50ML EXTRAIT</span>
-            <span style="font-family:'Cinzel',serif; font-size:18px; font-weight:800; color:#ffffff;">690 <small style="font-size:11px; font-family:'Plus Jakarta Sans',sans-serif; color:#8c1212;">EGP</small></span>
+            <span style="font-family:'Cinzel',serif; font-size:19px; font-weight:800; color:#ffffff;">690 <small style="font-size:11px; font-family:'Plus Jakarta Sans',sans-serif; color:#8c1212;">EGP</small></span>
           </div>
-          <button onclick="addToCart('84352490', 'Oud Maracuja — Maison Crivelli (50Ml)', 690, 'https://cdn.vondera.app/stores/m2YjlfvGkHgUUlfXpywuC0x1pXX2/gallery/16568dbe-1bb3-46a5-aaa9-940a643d1471-thumbnail.webp', 'Inspired by Maison Crivelli')" style="width:100%; background:#8c1212; color:#ffffff; border:none; padding:12px; border-radius:6px; font-family:'Plus Jakarta Sans',sans-serif; font-size:11px; font-weight:700; letter-spacing:2px; text-transform:uppercase; cursor:pointer; transition:background .2s;" onmouseenter="this.style.background='#a81616'" onmouseleave="this.style.background='#8c1212'">
+          <button onclick="addToCart('84352490', 'Oud Maracuja — Maison Crivelli (50Ml)', 690, 'https://cdn.vondera.app/stores/m2YjlfvGkHgUUlfXpywuC0x1pXX2/gallery/16568dbe-1bb3-46a5-aaa9-940a643d1471-thumbnail.webp', 'Inspired by Maison Crivelli')" style="width:100%; background:#8c1212; color:#ffffff; border:none; padding:13px; border-radius:6px; font-family:'Plus Jakarta Sans',sans-serif; font-size:11px; font-weight:700; letter-spacing:2px; text-transform:uppercase; cursor:pointer; transition:background .2s;" onmouseenter="this.style.background='#a81616'" onmouseleave="this.style.background='#8c1212'">
             Add to Cart &bull; إضافة للسلة
           </button>
         </div>
@@ -1111,22 +2204,22 @@
     </div>
 
     <div class="velum-prod-card" data-vibes="all smoky-winter" style="background:#0c0606; border:1px solid rgba(140,18,18,0.3); border-radius:12px; overflow:hidden; display:flex; flex-direction:column; transition:transform .3s ease, border-color .3s ease, box-shadow .3s ease;" onmouseenter="this.style.borderColor='#8c1212'; this.style.boxShadow='0 12px 35px rgba(140,18,18,0.25)';" onmouseleave="this.style.borderColor='rgba(140,18,18,0.3)'; this.style.boxShadow='none';">
-      <div style="position:relative; width:100%; height:320px; background:radial-gradient(ellipse at center, rgba(60,6,6,0.5) 0%, #060202 75%); display:flex; align-items:center; justify-content:center; overflow:hidden;">
-        <span style="position:absolute; top:12px; left:12px; background:rgba(140,18,18,0.85); color:#ffffff; font-family:'Plus Jakarta Sans',sans-serif; font-size:9.5px; font-weight:800; letter-spacing:1.5px; text-transform:uppercase; padding:4px 8px; border-radius:3px; z-index:2;">SIGNATURE</span>
+      <div style="position:relative; width:100%; height:320px; background:radial-gradient(ellipse at center, rgba(70,6,6,0.55) 0%, #060202 75%); display:flex; align-items:center; justify-content:center; overflow:hidden;">
+        <span style="position:absolute; top:12px; left:12px; background:rgba(140,18,18,0.9); color:#ffffff; font-family:'Plus Jakarta Sans',sans-serif; font-size:9.5px; font-weight:800; letter-spacing:1.5px; text-transform:uppercase; padding:4px 8px; border-radius:3px; z-index:2;">SIGNATURE</span>
         <img src="https://cdn.vondera.app/stores/m2YjlfvGkHgUUlfXpywuC0x1pXX2/gallery/aabaae35-7ee2-41cc-bdd2-a66632cbb01f-thumbnail.webp" alt="Stronger With You Parfum — Armani (50Ml)" style="max-height:270px; max-width:85%; object-fit:contain; filter:drop-shadow(0 15px 30px rgba(0,0,0,0.9)); transition:transform .5s ease;" onmouseenter="this.style.transform='scale(1.05)'" onmouseleave="this.style.transform='scale(1)'" loading="lazy" />
       </div>
-      <div style="padding:20px; flex:1; display:flex; flex-direction:column; justify-content:space-between;">
+      <div style="padding:22px; flex:1; display:flex; flex-direction:column; justify-content:space-between;">
         <div>
-          <span style="font-family:'Plus Jakarta Sans',sans-serif; font-size:10px; color:#c9a96e; letter-spacing:2px; text-transform:uppercase; font-weight:700; display:block; margin-bottom:6px;">Inspired by Armani</span>
-          <h3 style="font-family:'Cinzel',serif; font-size:17px; font-weight:700; color:#ffffff; margin:0 0 8px 0; text-transform:uppercase; letter-spacing:1px; line-height:1.3;">Stronger With You Parfum — Armani (50Ml)</h3>
-          <p style="font-family:'Plus Jakarta Sans',sans-serif; font-size:11.5px; color:#a89f91; margin:0 0 14px 0; line-height:1.5;">Roasted Chestnut • Lavender • Amber</p>
+          <span style="font-family:'Plus Jakarta Sans',sans-serif; font-size:10.5px; color:#c9a96e; letter-spacing:2px; text-transform:uppercase; font-weight:700; display:block; margin-bottom:6px;">Inspired by Armani</span>
+          <h3 style="font-family:'Cinzel',serif; font-size:18px; font-weight:700; color:#ffffff; margin:0 0 8px 0; text-transform:uppercase; letter-spacing:1px; line-height:1.3;">Stronger With You Parfum — Armani (50Ml)</h3>
+          <p style="font-family:'Plus Jakarta Sans',sans-serif; font-size:12px; color:#a89f91; margin:0 0 16px 0; line-height:1.5;">Roasted Chestnut • Lavender • Amber</p>
         </div>
         <div>
-          <div style="display:flex; justify-content:space-between; align-items:baseline; margin-bottom:14px; border-top:1px solid rgba(255,255,255,0.06); padding-top:12px;">
+          <div style="display:flex; justify-content:space-between; align-items:baseline; margin-bottom:14px; border-top:1px solid rgba(255,255,255,0.06); padding-top:14px;">
             <span style="font-family:'Plus Jakarta Sans',sans-serif; font-size:11px; color:#666; letter-spacing:1px;">50ML EXTRAIT</span>
-            <span style="font-family:'Cinzel',serif; font-size:18px; font-weight:800; color:#ffffff;">690 <small style="font-size:11px; font-family:'Plus Jakarta Sans',sans-serif; color:#8c1212;">EGP</small></span>
+            <span style="font-family:'Cinzel',serif; font-size:19px; font-weight:800; color:#ffffff;">690 <small style="font-size:11px; font-family:'Plus Jakarta Sans',sans-serif; color:#8c1212;">EGP</small></span>
           </div>
-          <button onclick="addToCart('80530753', 'Stronger With You Parfum — Armani (50Ml)', 690, 'https://cdn.vondera.app/stores/m2YjlfvGkHgUUlfXpywuC0x1pXX2/gallery/aabaae35-7ee2-41cc-bdd2-a66632cbb01f-thumbnail.webp', 'Inspired by Armani')" style="width:100%; background:#8c1212; color:#ffffff; border:none; padding:12px; border-radius:6px; font-family:'Plus Jakarta Sans',sans-serif; font-size:11px; font-weight:700; letter-spacing:2px; text-transform:uppercase; cursor:pointer; transition:background .2s;" onmouseenter="this.style.background='#a81616'" onmouseleave="this.style.background='#8c1212'">
+          <button onclick="addToCart('80530753', 'Stronger With You Parfum — Armani (50Ml)', 690, 'https://cdn.vondera.app/stores/m2YjlfvGkHgUUlfXpywuC0x1pXX2/gallery/aabaae35-7ee2-41cc-bdd2-a66632cbb01f-thumbnail.webp', 'Inspired by Armani')" style="width:100%; background:#8c1212; color:#ffffff; border:none; padding:13px; border-radius:6px; font-family:'Plus Jakarta Sans',sans-serif; font-size:11px; font-weight:700; letter-spacing:2px; text-transform:uppercase; cursor:pointer; transition:background .2s;" onmouseenter="this.style.background='#a81616'" onmouseleave="this.style.background='#8c1212'">
             Add to Cart &bull; إضافة للسلة
           </button>
         </div>
@@ -1134,22 +2227,22 @@
     </div>
 
     <div class="velum-prod-card" data-vibes="all fresh-crisp" style="background:#0c0606; border:1px solid rgba(140,18,18,0.3); border-radius:12px; overflow:hidden; display:flex; flex-direction:column; transition:transform .3s ease, border-color .3s ease, box-shadow .3s ease;" onmouseenter="this.style.borderColor='#8c1212'; this.style.boxShadow='0 12px 35px rgba(140,18,18,0.25)';" onmouseleave="this.style.borderColor='rgba(140,18,18,0.3)'; this.style.boxShadow='none';">
-      <div style="position:relative; width:100%; height:320px; background:radial-gradient(ellipse at center, rgba(60,6,6,0.5) 0%, #060202 75%); display:flex; align-items:center; justify-content:center; overflow:hidden;">
-        <span style="position:absolute; top:12px; left:12px; background:rgba(140,18,18,0.85); color:#ffffff; font-family:'Plus Jakarta Sans',sans-serif; font-size:9.5px; font-weight:800; letter-spacing:1.5px; text-transform:uppercase; padding:4px 8px; border-radius:3px; z-index:2;">EXCLUSIVE</span>
+      <div style="position:relative; width:100%; height:320px; background:radial-gradient(ellipse at center, rgba(70,6,6,0.55) 0%, #060202 75%); display:flex; align-items:center; justify-content:center; overflow:hidden;">
+        <span style="position:absolute; top:12px; left:12px; background:rgba(140,18,18,0.9); color:#ffffff; font-family:'Plus Jakarta Sans',sans-serif; font-size:9.5px; font-weight:800; letter-spacing:1.5px; text-transform:uppercase; padding:4px 8px; border-radius:3px; z-index:2;">EXCLUSIVE</span>
         <img src="https://cdn.vondera.app/stores/m2YjlfvGkHgUUlfXpywuC0x1pXX2/gallery/c4d9d378-8748-4274-b6c4-8115127ecca4-thumbnail.webp" alt="Gold Juice — Borntostandout (50Ml)" style="max-height:270px; max-width:85%; object-fit:contain; filter:drop-shadow(0 15px 30px rgba(0,0,0,0.9)); transition:transform .5s ease;" onmouseenter="this.style.transform='scale(1.05)'" onmouseleave="this.style.transform='scale(1)'" loading="lazy" />
       </div>
-      <div style="padding:20px; flex:1; display:flex; flex-direction:column; justify-content:space-between;">
+      <div style="padding:22px; flex:1; display:flex; flex-direction:column; justify-content:space-between;">
         <div>
-          <span style="font-family:'Plus Jakarta Sans',sans-serif; font-size:10px; color:#c9a96e; letter-spacing:2px; text-transform:uppercase; font-weight:700; display:block; margin-bottom:6px;">Inspired by BORNTOSTANDOUT</span>
-          <h3 style="font-family:'Cinzel',serif; font-size:17px; font-weight:700; color:#ffffff; margin:0 0 8px 0; text-transform:uppercase; letter-spacing:1px; line-height:1.3;">Gold Juice — Borntostandout (50Ml)</h3>
-          <p style="font-family:'Plus Jakarta Sans',sans-serif; font-size:11.5px; color:#a89f91; margin:0 0 14px 0; line-height:1.5;">Honey Melon • Woody Woods • Amber</p>
+          <span style="font-family:'Plus Jakarta Sans',sans-serif; font-size:10.5px; color:#c9a96e; letter-spacing:2px; text-transform:uppercase; font-weight:700; display:block; margin-bottom:6px;">Inspired by BORNTOSTANDOUT</span>
+          <h3 style="font-family:'Cinzel',serif; font-size:18px; font-weight:700; color:#ffffff; margin:0 0 8px 0; text-transform:uppercase; letter-spacing:1px; line-height:1.3;">Gold Juice — Borntostandout (50Ml)</h3>
+          <p style="font-family:'Plus Jakarta Sans',sans-serif; font-size:12px; color:#a89f91; margin:0 0 16px 0; line-height:1.5;">Honey Melon • Woody Woods • Amber</p>
         </div>
         <div>
-          <div style="display:flex; justify-content:space-between; align-items:baseline; margin-bottom:14px; border-top:1px solid rgba(255,255,255,0.06); padding-top:12px;">
+          <div style="display:flex; justify-content:space-between; align-items:baseline; margin-bottom:14px; border-top:1px solid rgba(255,255,255,0.06); padding-top:14px;">
             <span style="font-family:'Plus Jakarta Sans',sans-serif; font-size:11px; color:#666; letter-spacing:1px;">50ML EXTRAIT</span>
-            <span style="font-family:'Cinzel',serif; font-size:18px; font-weight:800; color:#ffffff;">690 <small style="font-size:11px; font-family:'Plus Jakarta Sans',sans-serif; color:#8c1212;">EGP</small></span>
+            <span style="font-family:'Cinzel',serif; font-size:19px; font-weight:800; color:#ffffff;">690 <small style="font-size:11px; font-family:'Plus Jakarta Sans',sans-serif; color:#8c1212;">EGP</small></span>
           </div>
-          <button onclick="addToCart('63657861', 'Gold Juice — Borntostandout (50Ml)', 690, 'https://cdn.vondera.app/stores/m2YjlfvGkHgUUlfXpywuC0x1pXX2/gallery/c4d9d378-8748-4274-b6c4-8115127ecca4-thumbnail.webp', 'Inspired by BORNTOSTANDOUT')" style="width:100%; background:#8c1212; color:#ffffff; border:none; padding:12px; border-radius:6px; font-family:'Plus Jakarta Sans',sans-serif; font-size:11px; font-weight:700; letter-spacing:2px; text-transform:uppercase; cursor:pointer; transition:background .2s;" onmouseenter="this.style.background='#a81616'" onmouseleave="this.style.background='#8c1212'">
+          <button onclick="addToCart('63657861', 'Gold Juice — Borntostandout (50Ml)', 690, 'https://cdn.vondera.app/stores/m2YjlfvGkHgUUlfXpywuC0x1pXX2/gallery/c4d9d378-8748-4274-b6c4-8115127ecca4-thumbnail.webp', 'Inspired by BORNTOSTANDOUT')" style="width:100%; background:#8c1212; color:#ffffff; border:none; padding:13px; border-radius:6px; font-family:'Plus Jakarta Sans',sans-serif; font-size:11px; font-weight:700; letter-spacing:2px; text-transform:uppercase; cursor:pointer; transition:background .2s;" onmouseenter="this.style.background='#a81616'" onmouseleave="this.style.background='#8c1212'">
             Add to Cart &bull; إضافة للسلة
           </button>
         </div>
@@ -1157,22 +2250,22 @@
     </div>
 
     <div class="velum-prod-card" data-vibes="all bestsellers smoky-winter" style="background:#0c0606; border:1px solid rgba(140,18,18,0.3); border-radius:12px; overflow:hidden; display:flex; flex-direction:column; transition:transform .3s ease, border-color .3s ease, box-shadow .3s ease;" onmouseenter="this.style.borderColor='#8c1212'; this.style.boxShadow='0 12px 35px rgba(140,18,18,0.25)';" onmouseleave="this.style.borderColor='rgba(140,18,18,0.3)'; this.style.boxShadow='none';">
-      <div style="position:relative; width:100%; height:320px; background:radial-gradient(ellipse at center, rgba(60,6,6,0.5) 0%, #060202 75%); display:flex; align-items:center; justify-content:center; overflow:hidden;">
-        <span style="position:absolute; top:12px; left:12px; background:rgba(140,18,18,0.85); color:#ffffff; font-family:'Plus Jakarta Sans',sans-serif; font-size:9.5px; font-weight:800; letter-spacing:1.5px; text-transform:uppercase; padding:4px 8px; border-radius:3px; z-index:2;">BESTSELLER</span>
+      <div style="position:relative; width:100%; height:320px; background:radial-gradient(ellipse at center, rgba(70,6,6,0.55) 0%, #060202 75%); display:flex; align-items:center; justify-content:center; overflow:hidden;">
+        <span style="position:absolute; top:12px; left:12px; background:rgba(140,18,18,0.9); color:#ffffff; font-family:'Plus Jakarta Sans',sans-serif; font-size:9.5px; font-weight:800; letter-spacing:1.5px; text-transform:uppercase; padding:4px 8px; border-radius:3px; z-index:2;">BESTSELLER</span>
         <img src="https://cdn.vondera.app/stores/m2YjlfvGkHgUUlfXpywuC0x1pXX2/gallery/f27b2611-20d7-4a0b-9964-a3085d712a2d-thumbnail.webp" alt="Smoking Hot — Kilian (50Ml)" style="max-height:270px; max-width:85%; object-fit:contain; filter:drop-shadow(0 15px 30px rgba(0,0,0,0.9)); transition:transform .5s ease;" onmouseenter="this.style.transform='scale(1.05)'" onmouseleave="this.style.transform='scale(1)'" loading="lazy" />
       </div>
-      <div style="padding:20px; flex:1; display:flex; flex-direction:column; justify-content:space-between;">
+      <div style="padding:22px; flex:1; display:flex; flex-direction:column; justify-content:space-between;">
         <div>
-          <span style="font-family:'Plus Jakarta Sans',sans-serif; font-size:10px; color:#c9a96e; letter-spacing:2px; text-transform:uppercase; font-weight:700; display:block; margin-bottom:6px;">Inspired by Kilian</span>
-          <h3 style="font-family:'Cinzel',serif; font-size:17px; font-weight:700; color:#ffffff; margin:0 0 8px 0; text-transform:uppercase; letter-spacing:1px; line-height:1.3;">Smoking Hot — Kilian (50Ml)</h3>
-          <p style="font-family:'Plus Jakarta Sans',sans-serif; font-size:11.5px; color:#a89f91; margin:0 0 14px 0; line-height:1.5;">Apple Shisha • Warm Bourbon • Cinnamon</p>
+          <span style="font-family:'Plus Jakarta Sans',sans-serif; font-size:10.5px; color:#c9a96e; letter-spacing:2px; text-transform:uppercase; font-weight:700; display:block; margin-bottom:6px;">Inspired by Kilian</span>
+          <h3 style="font-family:'Cinzel',serif; font-size:18px; font-weight:700; color:#ffffff; margin:0 0 8px 0; text-transform:uppercase; letter-spacing:1px; line-height:1.3;">Smoking Hot — Kilian (50Ml)</h3>
+          <p style="font-family:'Plus Jakarta Sans',sans-serif; font-size:12px; color:#a89f91; margin:0 0 16px 0; line-height:1.5;">Apple Shisha • Warm Bourbon • Cinnamon</p>
         </div>
         <div>
-          <div style="display:flex; justify-content:space-between; align-items:baseline; margin-bottom:14px; border-top:1px solid rgba(255,255,255,0.06); padding-top:12px;">
+          <div style="display:flex; justify-content:space-between; align-items:baseline; margin-bottom:14px; border-top:1px solid rgba(255,255,255,0.06); padding-top:14px;">
             <span style="font-family:'Plus Jakarta Sans',sans-serif; font-size:11px; color:#666; letter-spacing:1px;">50ML EXTRAIT</span>
-            <span style="font-family:'Cinzel',serif; font-size:18px; font-weight:800; color:#ffffff;">690 <small style="font-size:11px; font-family:'Plus Jakarta Sans',sans-serif; color:#8c1212;">EGP</small></span>
+            <span style="font-family:'Cinzel',serif; font-size:19px; font-weight:800; color:#ffffff;">690 <small style="font-size:11px; font-family:'Plus Jakarta Sans',sans-serif; color:#8c1212;">EGP</small></span>
           </div>
-          <button onclick="addToCart('62932254', 'Smoking Hot — Kilian (50Ml)', 690, 'https://cdn.vondera.app/stores/m2YjlfvGkHgUUlfXpywuC0x1pXX2/gallery/f27b2611-20d7-4a0b-9964-a3085d712a2d-thumbnail.webp', 'Inspired by Kilian')" style="width:100%; background:#8c1212; color:#ffffff; border:none; padding:12px; border-radius:6px; font-family:'Plus Jakarta Sans',sans-serif; font-size:11px; font-weight:700; letter-spacing:2px; text-transform:uppercase; cursor:pointer; transition:background .2s;" onmouseenter="this.style.background='#a81616'" onmouseleave="this.style.background='#8c1212'">
+          <button onclick="addToCart('62932254', 'Smoking Hot — Kilian (50Ml)', 690, 'https://cdn.vondera.app/stores/m2YjlfvGkHgUUlfXpywuC0x1pXX2/gallery/f27b2611-20d7-4a0b-9964-a3085d712a2d-thumbnail.webp', 'Inspired by Kilian')" style="width:100%; background:#8c1212; color:#ffffff; border:none; padding:13px; border-radius:6px; font-family:'Plus Jakarta Sans',sans-serif; font-size:11px; font-weight:700; letter-spacing:2px; text-transform:uppercase; cursor:pointer; transition:background .2s;" onmouseenter="this.style.background='#a81616'" onmouseleave="this.style.background='#8c1212'">
             Add to Cart &bull; إضافة للسلة
           </button>
         </div>
@@ -1180,22 +2273,22 @@
     </div>
 
     <div class="velum-prod-card" data-vibes="all smoky-winter" style="background:#0c0606; border:1px solid rgba(140,18,18,0.3); border-radius:12px; overflow:hidden; display:flex; flex-direction:column; transition:transform .3s ease, border-color .3s ease, box-shadow .3s ease;" onmouseenter="this.style.borderColor='#8c1212'; this.style.boxShadow='0 12px 35px rgba(140,18,18,0.25)';" onmouseleave="this.style.borderColor='rgba(140,18,18,0.3)'; this.style.boxShadow='none';">
-      <div style="position:relative; width:100%; height:320px; background:radial-gradient(ellipse at center, rgba(60,6,6,0.5) 0%, #060202 75%); display:flex; align-items:center; justify-content:center; overflow:hidden;">
-        <span style="position:absolute; top:12px; left:12px; background:rgba(140,18,18,0.85); color:#ffffff; font-family:'Plus Jakarta Sans',sans-serif; font-size:9.5px; font-weight:800; letter-spacing:1.5px; text-transform:uppercase; padding:4px 8px; border-radius:3px; z-index:2;">GOURMAND</span>
+      <div style="position:relative; width:100%; height:320px; background:radial-gradient(ellipse at center, rgba(70,6,6,0.55) 0%, #060202 75%); display:flex; align-items:center; justify-content:center; overflow:hidden;">
+        <span style="position:absolute; top:12px; left:12px; background:rgba(140,18,18,0.9); color:#ffffff; font-family:'Plus Jakarta Sans',sans-serif; font-size:9.5px; font-weight:800; letter-spacing:1.5px; text-transform:uppercase; padding:4px 8px; border-radius:3px; z-index:2;">GOURMAND</span>
         <img src="https://cdn.vondera.app/stores/m2YjlfvGkHgUUlfXpywuC0x1pXX2/gallery/c76cf651-5a0f-4796-b39a-17e67de551f5-thumbnail.webp" alt="Nuts — Borntostandout (50Ml)" style="max-height:270px; max-width:85%; object-fit:contain; filter:drop-shadow(0 15px 30px rgba(0,0,0,0.9)); transition:transform .5s ease;" onmouseenter="this.style.transform='scale(1.05)'" onmouseleave="this.style.transform='scale(1)'" loading="lazy" />
       </div>
-      <div style="padding:20px; flex:1; display:flex; flex-direction:column; justify-content:space-between;">
+      <div style="padding:22px; flex:1; display:flex; flex-direction:column; justify-content:space-between;">
         <div>
-          <span style="font-family:'Plus Jakarta Sans',sans-serif; font-size:10px; color:#c9a96e; letter-spacing:2px; text-transform:uppercase; font-weight:700; display:block; margin-bottom:6px;">Inspired by BORNTOSTANDOUT</span>
-          <h3 style="font-family:'Cinzel',serif; font-size:17px; font-weight:700; color:#ffffff; margin:0 0 8px 0; text-transform:uppercase; letter-spacing:1px; line-height:1.3;">Nuts — Borntostandout (50Ml)</h3>
-          <p style="font-family:'Plus Jakarta Sans',sans-serif; font-size:11.5px; color:#a89f91; margin:0 0 14px 0; line-height:1.5;">Roasted Hazelnut • Nutty Cream • Chocolate</p>
+          <span style="font-family:'Plus Jakarta Sans',sans-serif; font-size:10.5px; color:#c9a96e; letter-spacing:2px; text-transform:uppercase; font-weight:700; display:block; margin-bottom:6px;">Inspired by BORNTOSTANDOUT</span>
+          <h3 style="font-family:'Cinzel',serif; font-size:18px; font-weight:700; color:#ffffff; margin:0 0 8px 0; text-transform:uppercase; letter-spacing:1px; line-height:1.3;">Nuts — Borntostandout (50Ml)</h3>
+          <p style="font-family:'Plus Jakarta Sans',sans-serif; font-size:12px; color:#a89f91; margin:0 0 16px 0; line-height:1.5;">Roasted Hazelnut • Nutty Cream • Chocolate</p>
         </div>
         <div>
-          <div style="display:flex; justify-content:space-between; align-items:baseline; margin-bottom:14px; border-top:1px solid rgba(255,255,255,0.06); padding-top:12px;">
+          <div style="display:flex; justify-content:space-between; align-items:baseline; margin-bottom:14px; border-top:1px solid rgba(255,255,255,0.06); padding-top:14px;">
             <span style="font-family:'Plus Jakarta Sans',sans-serif; font-size:11px; color:#666; letter-spacing:1px;">50ML EXTRAIT</span>
-            <span style="font-family:'Cinzel',serif; font-size:18px; font-weight:800; color:#ffffff;">690 <small style="font-size:11px; font-family:'Plus Jakarta Sans',sans-serif; color:#8c1212;">EGP</small></span>
+            <span style="font-family:'Cinzel',serif; font-size:19px; font-weight:800; color:#ffffff;">690 <small style="font-size:11px; font-family:'Plus Jakarta Sans',sans-serif; color:#8c1212;">EGP</small></span>
           </div>
-          <button onclick="addToCart('54598915', 'Nuts — Borntostandout (50Ml)', 690, 'https://cdn.vondera.app/stores/m2YjlfvGkHgUUlfXpywuC0x1pXX2/gallery/c76cf651-5a0f-4796-b39a-17e67de551f5-thumbnail.webp', 'Inspired by BORNTOSTANDOUT')" style="width:100%; background:#8c1212; color:#ffffff; border:none; padding:12px; border-radius:6px; font-family:'Plus Jakarta Sans',sans-serif; font-size:11px; font-weight:700; letter-spacing:2px; text-transform:uppercase; cursor:pointer; transition:background .2s;" onmouseenter="this.style.background='#a81616'" onmouseleave="this.style.background='#8c1212'">
+          <button onclick="addToCart('54598915', 'Nuts — Borntostandout (50Ml)', 690, 'https://cdn.vondera.app/stores/m2YjlfvGkHgUUlfXpywuC0x1pXX2/gallery/c76cf651-5a0f-4796-b39a-17e67de551f5-thumbnail.webp', 'Inspired by BORNTOSTANDOUT')" style="width:100%; background:#8c1212; color:#ffffff; border:none; padding:13px; border-radius:6px; font-family:'Plus Jakarta Sans',sans-serif; font-size:11px; font-weight:700; letter-spacing:2px; text-transform:uppercase; cursor:pointer; transition:background .2s;" onmouseenter="this.style.background='#a81616'" onmouseleave="this.style.background='#8c1212'">
             Add to Cart &bull; إضافة للسلة
           </button>
         </div>
@@ -1203,22 +2296,22 @@
     </div>
 
     <div class="velum-prod-card" data-vibes="all fresh-crisp" style="background:#0c0606; border:1px solid rgba(140,18,18,0.3); border-radius:12px; overflow:hidden; display:flex; flex-direction:column; transition:transform .3s ease, border-color .3s ease, box-shadow .3s ease;" onmouseenter="this.style.borderColor='#8c1212'; this.style.boxShadow='0 12px 35px rgba(140,18,18,0.25)';" onmouseleave="this.style.borderColor='rgba(140,18,18,0.3)'; this.style.boxShadow='none';">
-      <div style="position:relative; width:100%; height:320px; background:radial-gradient(ellipse at center, rgba(60,6,6,0.5) 0%, #060202 75%); display:flex; align-items:center; justify-content:center; overflow:hidden;">
-        <span style="position:absolute; top:12px; left:12px; background:rgba(140,18,18,0.85); color:#ffffff; font-family:'Plus Jakarta Sans',sans-serif; font-size:9.5px; font-weight:800; letter-spacing:1.5px; text-transform:uppercase; padding:4px 8px; border-radius:3px; z-index:2;">FRESH NOIR</span>
+      <div style="position:relative; width:100%; height:320px; background:radial-gradient(ellipse at center, rgba(70,6,6,0.55) 0%, #060202 75%); display:flex; align-items:center; justify-content:center; overflow:hidden;">
+        <span style="position:absolute; top:12px; left:12px; background:rgba(140,18,18,0.9); color:#ffffff; font-family:'Plus Jakarta Sans',sans-serif; font-size:9.5px; font-weight:800; letter-spacing:1.5px; text-transform:uppercase; padding:4px 8px; border-radius:3px; z-index:2;">FRESH NOIR</span>
         <img src="https://cdn.vondera.app/stores/m2YjlfvGkHgUUlfXpywuC0x1pXX2/gallery/c674f165-2388-4247-a303-dc956d264f0e-thumbnail.webp" alt="Penguin — Zoologist (50Ml)" style="max-height:270px; max-width:85%; object-fit:contain; filter:drop-shadow(0 15px 30px rgba(0,0,0,0.9)); transition:transform .5s ease;" onmouseenter="this.style.transform='scale(1.05)'" onmouseleave="this.style.transform='scale(1)'" loading="lazy" />
       </div>
-      <div style="padding:20px; flex:1; display:flex; flex-direction:column; justify-content:space-between;">
+      <div style="padding:22px; flex:1; display:flex; flex-direction:column; justify-content:space-between;">
         <div>
-          <span style="font-family:'Plus Jakarta Sans',sans-serif; font-size:10px; color:#c9a96e; letter-spacing:2px; text-transform:uppercase; font-weight:700; display:block; margin-bottom:6px;">Inspired by Zoologist</span>
-          <h3 style="font-family:'Cinzel',serif; font-size:17px; font-weight:700; color:#ffffff; margin:0 0 8px 0; text-transform:uppercase; letter-spacing:1px; line-height:1.3;">Penguin — Zoologist (50Ml)</h3>
-          <p style="font-family:'Plus Jakarta Sans',sans-serif; font-size:11.5px; color:#a89f91; margin:0 0 14px 0; line-height:1.5;">Crisp Air • Frosted Plum • Juniper</p>
+          <span style="font-family:'Plus Jakarta Sans',sans-serif; font-size:10.5px; color:#c9a96e; letter-spacing:2px; text-transform:uppercase; font-weight:700; display:block; margin-bottom:6px;">Inspired by Zoologist</span>
+          <h3 style="font-family:'Cinzel',serif; font-size:18px; font-weight:700; color:#ffffff; margin:0 0 8px 0; text-transform:uppercase; letter-spacing:1px; line-height:1.3;">Penguin — Zoologist (50Ml)</h3>
+          <p style="font-family:'Plus Jakarta Sans',sans-serif; font-size:12px; color:#a89f91; margin:0 0 16px 0; line-height:1.5;">Crisp Air • Frosted Plum • Juniper</p>
         </div>
         <div>
-          <div style="display:flex; justify-content:space-between; align-items:baseline; margin-bottom:14px; border-top:1px solid rgba(255,255,255,0.06); padding-top:12px;">
+          <div style="display:flex; justify-content:space-between; align-items:baseline; margin-bottom:14px; border-top:1px solid rgba(255,255,255,0.06); padding-top:14px;">
             <span style="font-family:'Plus Jakarta Sans',sans-serif; font-size:11px; color:#666; letter-spacing:1px;">50ML EXTRAIT</span>
-            <span style="font-family:'Cinzel',serif; font-size:18px; font-weight:800; color:#ffffff;">690 <small style="font-size:11px; font-family:'Plus Jakarta Sans',sans-serif; color:#8c1212;">EGP</small></span>
+            <span style="font-family:'Cinzel',serif; font-size:19px; font-weight:800; color:#ffffff;">690 <small style="font-size:11px; font-family:'Plus Jakarta Sans',sans-serif; color:#8c1212;">EGP</small></span>
           </div>
-          <button onclick="addToCart('51001357', 'Penguin — Zoologist (50Ml)', 690, 'https://cdn.vondera.app/stores/m2YjlfvGkHgUUlfXpywuC0x1pXX2/gallery/c674f165-2388-4247-a303-dc956d264f0e-thumbnail.webp', 'Inspired by Zoologist')" style="width:100%; background:#8c1212; color:#ffffff; border:none; padding:12px; border-radius:6px; font-family:'Plus Jakarta Sans',sans-serif; font-size:11px; font-weight:700; letter-spacing:2px; text-transform:uppercase; cursor:pointer; transition:background .2s;" onmouseenter="this.style.background='#a81616'" onmouseleave="this.style.background='#8c1212'">
+          <button onclick="addToCart('51001357', 'Penguin — Zoologist (50Ml)', 690, 'https://cdn.vondera.app/stores/m2YjlfvGkHgUUlfXpywuC0x1pXX2/gallery/c674f165-2388-4247-a303-dc956d264f0e-thumbnail.webp', 'Inspired by Zoologist')" style="width:100%; background:#8c1212; color:#ffffff; border:none; padding:13px; border-radius:6px; font-family:'Plus Jakarta Sans',sans-serif; font-size:11px; font-weight:700; letter-spacing:2px; text-transform:uppercase; cursor:pointer; transition:background .2s;" onmouseenter="this.style.background='#a81616'" onmouseleave="this.style.background='#8c1212'">
             Add to Cart &bull; إضافة للسلة
           </button>
         </div>
@@ -1226,22 +2319,22 @@
     </div>
 
     <div class="velum-prod-card" data-vibes="all bestsellers smoky-winter" style="background:#0c0606; border:1px solid rgba(140,18,18,0.3); border-radius:12px; overflow:hidden; display:flex; flex-direction:column; transition:transform .3s ease, border-color .3s ease, box-shadow .3s ease;" onmouseenter="this.style.borderColor='#8c1212'; this.style.boxShadow='0 12px 35px rgba(140,18,18,0.25)';" onmouseleave="this.style.borderColor='rgba(140,18,18,0.3)'; this.style.boxShadow='none';">
-      <div style="position:relative; width:100%; height:320px; background:radial-gradient(ellipse at center, rgba(60,6,6,0.5) 0%, #060202 75%); display:flex; align-items:center; justify-content:center; overflow:hidden;">
-        <span style="position:absolute; top:12px; left:12px; background:rgba(140,18,18,0.85); color:#ffffff; font-family:'Plus Jakarta Sans',sans-serif; font-size:9.5px; font-weight:800; letter-spacing:1.5px; text-transform:uppercase; padding:4px 8px; border-radius:3px; z-index:2;">BESTSELLER</span>
+      <div style="position:relative; width:100%; height:320px; background:radial-gradient(ellipse at center, rgba(70,6,6,0.55) 0%, #060202 75%); display:flex; align-items:center; justify-content:center; overflow:hidden;">
+        <span style="position:absolute; top:12px; left:12px; background:rgba(140,18,18,0.9); color:#ffffff; font-family:'Plus Jakarta Sans',sans-serif; font-size:9.5px; font-weight:800; letter-spacing:1.5px; text-transform:uppercase; padding:4px 8px; border-radius:3px; z-index:2;">BESTSELLER</span>
         <img src="https://cdn.vondera.app/stores/m2YjlfvGkHgUUlfXpywuC0x1pXX2/gallery/653acd72-fb17-4321-a060-647842799ffb-thumbnail.webp" alt="Drunk Lovers — Borntostandout (50Ml)" style="max-height:270px; max-width:85%; object-fit:contain; filter:drop-shadow(0 15px 30px rgba(0,0,0,0.9)); transition:transform .5s ease;" onmouseenter="this.style.transform='scale(1.05)'" onmouseleave="this.style.transform='scale(1)'" loading="lazy" />
       </div>
-      <div style="padding:20px; flex:1; display:flex; flex-direction:column; justify-content:space-between;">
+      <div style="padding:22px; flex:1; display:flex; flex-direction:column; justify-content:space-between;">
         <div>
-          <span style="font-family:'Plus Jakarta Sans',sans-serif; font-size:10px; color:#c9a96e; letter-spacing:2px; text-transform:uppercase; font-weight:700; display:block; margin-bottom:6px;">Inspired by BORNTOSTANDOUT</span>
-          <h3 style="font-family:'Cinzel',serif; font-size:17px; font-weight:700; color:#ffffff; margin:0 0 8px 0; text-transform:uppercase; letter-spacing:1px; line-height:1.3;">Drunk Lovers — Borntostandout (50Ml)</h3>
-          <p style="font-family:'Plus Jakarta Sans',sans-serif; font-size:11.5px; color:#a89f91; margin:0 0 14px 0; line-height:1.5;">Red Chili • Wild Cognac • Spices</p>
+          <span style="font-family:'Plus Jakarta Sans',sans-serif; font-size:10.5px; color:#c9a96e; letter-spacing:2px; text-transform:uppercase; font-weight:700; display:block; margin-bottom:6px;">Inspired by BORNTOSTANDOUT</span>
+          <h3 style="font-family:'Cinzel',serif; font-size:18px; font-weight:700; color:#ffffff; margin:0 0 8px 0; text-transform:uppercase; letter-spacing:1px; line-height:1.3;">Drunk Lovers — Borntostandout (50Ml)</h3>
+          <p style="font-family:'Plus Jakarta Sans',sans-serif; font-size:12px; color:#a89f91; margin:0 0 16px 0; line-height:1.5;">Red Chili • Wild Cognac • Spices</p>
         </div>
         <div>
-          <div style="display:flex; justify-content:space-between; align-items:baseline; margin-bottom:14px; border-top:1px solid rgba(255,255,255,0.06); padding-top:12px;">
+          <div style="display:flex; justify-content:space-between; align-items:baseline; margin-bottom:14px; border-top:1px solid rgba(255,255,255,0.06); padding-top:14px;">
             <span style="font-family:'Plus Jakarta Sans',sans-serif; font-size:11px; color:#666; letter-spacing:1px;">50ML EXTRAIT</span>
-            <span style="font-family:'Cinzel',serif; font-size:18px; font-weight:800; color:#ffffff;">690 <small style="font-size:11px; font-family:'Plus Jakarta Sans',sans-serif; color:#8c1212;">EGP</small></span>
+            <span style="font-family:'Cinzel',serif; font-size:19px; font-weight:800; color:#ffffff;">690 <small style="font-size:11px; font-family:'Plus Jakarta Sans',sans-serif; color:#8c1212;">EGP</small></span>
           </div>
-          <button onclick="addToCart('49371173', 'Drunk Lovers — Borntostandout (50Ml)', 690, 'https://cdn.vondera.app/stores/m2YjlfvGkHgUUlfXpywuC0x1pXX2/gallery/653acd72-fb17-4321-a060-647842799ffb-thumbnail.webp', 'Inspired by BORNTOSTANDOUT')" style="width:100%; background:#8c1212; color:#ffffff; border:none; padding:12px; border-radius:6px; font-family:'Plus Jakarta Sans',sans-serif; font-size:11px; font-weight:700; letter-spacing:2px; text-transform:uppercase; cursor:pointer; transition:background .2s;" onmouseenter="this.style.background='#a81616'" onmouseleave="this.style.background='#8c1212'">
+          <button onclick="addToCart('49371173', 'Drunk Lovers — Borntostandout (50Ml)', 690, 'https://cdn.vondera.app/stores/m2YjlfvGkHgUUlfXpywuC0x1pXX2/gallery/653acd72-fb17-4321-a060-647842799ffb-thumbnail.webp', 'Inspired by BORNTOSTANDOUT')" style="width:100%; background:#8c1212; color:#ffffff; border:none; padding:13px; border-radius:6px; font-family:'Plus Jakarta Sans',sans-serif; font-size:11px; font-weight:700; letter-spacing:2px; text-transform:uppercase; cursor:pointer; transition:background .2s;" onmouseenter="this.style.background='#a81616'" onmouseleave="this.style.background='#8c1212'">
             Add to Cart &bull; إضافة للسلة
           </button>
         </div>
@@ -1249,22 +2342,22 @@
     </div>
 
     <div class="velum-prod-card" data-vibes="all bestsellers exotic-oud" style="background:#0c0606; border:1px solid rgba(140,18,18,0.3); border-radius:12px; overflow:hidden; display:flex; flex-direction:column; transition:transform .3s ease, border-color .3s ease, box-shadow .3s ease;" onmouseenter="this.style.borderColor='#8c1212'; this.style.boxShadow='0 12px 35px rgba(140,18,18,0.25)';" onmouseleave="this.style.borderColor='rgba(140,18,18,0.3)'; this.style.boxShadow='none';">
-      <div style="position:relative; width:100%; height:320px; background:radial-gradient(ellipse at center, rgba(60,6,6,0.5) 0%, #060202 75%); display:flex; align-items:center; justify-content:center; overflow:hidden;">
-        <span style="position:absolute; top:12px; left:12px; background:rgba(140,18,18,0.85); color:#ffffff; font-family:'Plus Jakarta Sans',sans-serif; font-size:9.5px; font-weight:800; letter-spacing:1.5px; text-transform:uppercase; padding:4px 8px; border-radius:3px; z-index:2;">EXOTIC</span>
+      <div style="position:relative; width:100%; height:320px; background:radial-gradient(ellipse at center, rgba(70,6,6,0.55) 0%, #060202 75%); display:flex; align-items:center; justify-content:center; overflow:hidden;">
+        <span style="position:absolute; top:12px; left:12px; background:rgba(140,18,18,0.9); color:#ffffff; font-family:'Plus Jakarta Sans',sans-serif; font-size:9.5px; font-weight:800; letter-spacing:1.5px; text-transform:uppercase; padding:4px 8px; border-radius:3px; z-index:2;">EXOTIC</span>
         <img src="https://cdn.vondera.app/stores/m2YjlfvGkHgUUlfXpywuC0x1pXX2/gallery/993865cd-486b-4518-a642-0fcf517ee8ab-thumbnail.webp" alt="Hibiscus — Maison Crivelli (50Ml)" style="max-height:270px; max-width:85%; object-fit:contain; filter:drop-shadow(0 15px 30px rgba(0,0,0,0.9)); transition:transform .5s ease;" onmouseenter="this.style.transform='scale(1.05)'" onmouseleave="this.style.transform='scale(1)'" loading="lazy" />
       </div>
-      <div style="padding:20px; flex:1; display:flex; flex-direction:column; justify-content:space-between;">
+      <div style="padding:22px; flex:1; display:flex; flex-direction:column; justify-content:space-between;">
         <div>
-          <span style="font-family:'Plus Jakarta Sans',sans-serif; font-size:10px; color:#c9a96e; letter-spacing:2px; text-transform:uppercase; font-weight:700; display:block; margin-bottom:6px;">Inspired by Maison Crivelli</span>
-          <h3 style="font-family:'Cinzel',serif; font-size:17px; font-weight:700; color:#ffffff; margin:0 0 8px 0; text-transform:uppercase; letter-spacing:1px; line-height:1.3;">Hibiscus — Maison Crivelli (50Ml)</h3>
-          <p style="font-family:'Plus Jakarta Sans',sans-serif; font-size:11.5px; color:#a89f91; margin:0 0 14px 0; line-height:1.5;">Hibiscus Flower • Leather • Vanilla Pod</p>
+          <span style="font-family:'Plus Jakarta Sans',sans-serif; font-size:10.5px; color:#c9a96e; letter-spacing:2px; text-transform:uppercase; font-weight:700; display:block; margin-bottom:6px;">Inspired by Maison Crivelli</span>
+          <h3 style="font-family:'Cinzel',serif; font-size:18px; font-weight:700; color:#ffffff; margin:0 0 8px 0; text-transform:uppercase; letter-spacing:1px; line-height:1.3;">Hibiscus — Maison Crivelli (50Ml)</h3>
+          <p style="font-family:'Plus Jakarta Sans',sans-serif; font-size:12px; color:#a89f91; margin:0 0 16px 0; line-height:1.5;">Hibiscus Flower • Leather • Vanilla Pod</p>
         </div>
         <div>
-          <div style="display:flex; justify-content:space-between; align-items:baseline; margin-bottom:14px; border-top:1px solid rgba(255,255,255,0.06); padding-top:12px;">
+          <div style="display:flex; justify-content:space-between; align-items:baseline; margin-bottom:14px; border-top:1px solid rgba(255,255,255,0.06); padding-top:14px;">
             <span style="font-family:'Plus Jakarta Sans',sans-serif; font-size:11px; color:#666; letter-spacing:1px;">50ML EXTRAIT</span>
-            <span style="font-family:'Cinzel',serif; font-size:18px; font-weight:800; color:#ffffff;">690 <small style="font-size:11px; font-family:'Plus Jakarta Sans',sans-serif; color:#8c1212;">EGP</small></span>
+            <span style="font-family:'Cinzel',serif; font-size:19px; font-weight:800; color:#ffffff;">690 <small style="font-size:11px; font-family:'Plus Jakarta Sans',sans-serif; color:#8c1212;">EGP</small></span>
           </div>
-          <button onclick="addToCart('43993336', 'Hibiscus — Maison Crivelli (50Ml)', 690, 'https://cdn.vondera.app/stores/m2YjlfvGkHgUUlfXpywuC0x1pXX2/gallery/993865cd-486b-4518-a642-0fcf517ee8ab-thumbnail.webp', 'Inspired by Maison Crivelli')" style="width:100%; background:#8c1212; color:#ffffff; border:none; padding:12px; border-radius:6px; font-family:'Plus Jakarta Sans',sans-serif; font-size:11px; font-weight:700; letter-spacing:2px; text-transform:uppercase; cursor:pointer; transition:background .2s;" onmouseenter="this.style.background='#a81616'" onmouseleave="this.style.background='#8c1212'">
+          <button onclick="addToCart('43993336', 'Hibiscus — Maison Crivelli (50Ml)', 690, 'https://cdn.vondera.app/stores/m2YjlfvGkHgUUlfXpywuC0x1pXX2/gallery/993865cd-486b-4518-a642-0fcf517ee8ab-thumbnail.webp', 'Inspired by Maison Crivelli')" style="width:100%; background:#8c1212; color:#ffffff; border:none; padding:13px; border-radius:6px; font-family:'Plus Jakarta Sans',sans-serif; font-size:11px; font-weight:700; letter-spacing:2px; text-transform:uppercase; cursor:pointer; transition:background .2s;" onmouseenter="this.style.background='#a81616'" onmouseleave="this.style.background='#8c1212'">
             Add to Cart &bull; إضافة للسلة
           </button>
         </div>
@@ -1272,22 +2365,22 @@
     </div>
 
     <div class="velum-prod-card" data-vibes="all bestsellers fresh-crisp" style="background:#0c0606; border:1px solid rgba(140,18,18,0.3); border-radius:12px; overflow:hidden; display:flex; flex-direction:column; transition:transform .3s ease, border-color .3s ease, box-shadow .3s ease;" onmouseenter="this.style.borderColor='#8c1212'; this.style.boxShadow='0 12px 35px rgba(140,18,18,0.25)';" onmouseleave="this.style.borderColor='rgba(140,18,18,0.3)'; this.style.boxShadow='none';">
-      <div style="position:relative; width:100%; height:320px; background:radial-gradient(ellipse at center, rgba(60,6,6,0.5) 0%, #060202 75%); display:flex; align-items:center; justify-content:center; overflow:hidden;">
-        <span style="position:absolute; top:12px; left:12px; background:rgba(140,18,18,0.85); color:#ffffff; font-family:'Plus Jakarta Sans',sans-serif; font-size:9.5px; font-weight:800; letter-spacing:1.5px; text-transform:uppercase; padding:4px 8px; border-radius:3px; z-index:2;">ICONIC</span>
+      <div style="position:relative; width:100%; height:320px; background:radial-gradient(ellipse at center, rgba(70,6,6,0.55) 0%, #060202 75%); display:flex; align-items:center; justify-content:center; overflow:hidden;">
+        <span style="position:absolute; top:12px; left:12px; background:rgba(140,18,18,0.9); color:#ffffff; font-family:'Plus Jakarta Sans',sans-serif; font-size:9.5px; font-weight:800; letter-spacing:1.5px; text-transform:uppercase; padding:4px 8px; border-radius:3px; z-index:2;">ICONIC</span>
         <img src="https://cdn.vondera.app/stores/m2YjlfvGkHgUUlfXpywuC0x1pXX2/gallery/2938e754-2fc7-4951-99a8-fbe82ab86d0f-thumbnail.webp" alt="La Nuit De L'Homme — Ysl (50Ml)" style="max-height:270px; max-width:85%; object-fit:contain; filter:drop-shadow(0 15px 30px rgba(0,0,0,0.9)); transition:transform .5s ease;" onmouseenter="this.style.transform='scale(1.05)'" onmouseleave="this.style.transform='scale(1)'" loading="lazy" />
       </div>
-      <div style="padding:20px; flex:1; display:flex; flex-direction:column; justify-content:space-between;">
+      <div style="padding:22px; flex:1; display:flex; flex-direction:column; justify-content:space-between;">
         <div>
-          <span style="font-family:'Plus Jakarta Sans',sans-serif; font-size:10px; color:#c9a96e; letter-spacing:2px; text-transform:uppercase; font-weight:700; display:block; margin-bottom:6px;">Inspired by YSL</span>
-          <h3 style="font-family:'Cinzel',serif; font-size:17px; font-weight:700; color:#ffffff; margin:0 0 8px 0; text-transform:uppercase; letter-spacing:1px; line-height:1.3;">La Nuit De L'Homme — Ysl (50Ml)</h3>
-          <p style="font-family:'Plus Jakarta Sans',sans-serif; font-size:11.5px; color:#a89f91; margin:0 0 14px 0; line-height:1.5;">Cardamom • Cedar • Bergamot</p>
+          <span style="font-family:'Plus Jakarta Sans',sans-serif; font-size:10.5px; color:#c9a96e; letter-spacing:2px; text-transform:uppercase; font-weight:700; display:block; margin-bottom:6px;">Inspired by YSL</span>
+          <h3 style="font-family:'Cinzel',serif; font-size:18px; font-weight:700; color:#ffffff; margin:0 0 8px 0; text-transform:uppercase; letter-spacing:1px; line-height:1.3;">La Nuit De L'Homme — Ysl (50Ml)</h3>
+          <p style="font-family:'Plus Jakarta Sans',sans-serif; font-size:12px; color:#a89f91; margin:0 0 16px 0; line-height:1.5;">Cardamom • Cedar • Bergamot</p>
         </div>
         <div>
-          <div style="display:flex; justify-content:space-between; align-items:baseline; margin-bottom:14px; border-top:1px solid rgba(255,255,255,0.06); padding-top:12px;">
+          <div style="display:flex; justify-content:space-between; align-items:baseline; margin-bottom:14px; border-top:1px solid rgba(255,255,255,0.06); padding-top:14px;">
             <span style="font-family:'Plus Jakarta Sans',sans-serif; font-size:11px; color:#666; letter-spacing:1px;">50ML EXTRAIT</span>
-            <span style="font-family:'Cinzel',serif; font-size:18px; font-weight:800; color:#ffffff;">690 <small style="font-size:11px; font-family:'Plus Jakarta Sans',sans-serif; color:#8c1212;">EGP</small></span>
+            <span style="font-family:'Cinzel',serif; font-size:19px; font-weight:800; color:#ffffff;">690 <small style="font-size:11px; font-family:'Plus Jakarta Sans',sans-serif; color:#8c1212;">EGP</small></span>
           </div>
-          <button onclick="addToCart('29366544', 'La Nuit De L'Homme — Ysl (50Ml)', 690, 'https://cdn.vondera.app/stores/m2YjlfvGkHgUUlfXpywuC0x1pXX2/gallery/2938e754-2fc7-4951-99a8-fbe82ab86d0f-thumbnail.webp', 'Inspired by YSL')" style="width:100%; background:#8c1212; color:#ffffff; border:none; padding:12px; border-radius:6px; font-family:'Plus Jakarta Sans',sans-serif; font-size:11px; font-weight:700; letter-spacing:2px; text-transform:uppercase; cursor:pointer; transition:background .2s;" onmouseenter="this.style.background='#a81616'" onmouseleave="this.style.background='#8c1212'">
+          <button onclick="addToCart('29366544', 'La Nuit De L'Homme — Ysl (50Ml)', 690, 'https://cdn.vondera.app/stores/m2YjlfvGkHgUUlfXpywuC0x1pXX2/gallery/2938e754-2fc7-4951-99a8-fbe82ab86d0f-thumbnail.webp', 'Inspired by YSL')" style="width:100%; background:#8c1212; color:#ffffff; border:none; padding:13px; border-radius:6px; font-family:'Plus Jakarta Sans',sans-serif; font-size:11px; font-weight:700; letter-spacing:2px; text-transform:uppercase; cursor:pointer; transition:background .2s;" onmouseenter="this.style.background='#a81616'" onmouseleave="this.style.background='#8c1212'">
             Add to Cart &bull; إضافة للسلة
           </button>
         </div>
@@ -1884,17 +2977,17 @@ details.velum-faq-item.active .velum-faq-answer,
 <!-- Cart Drawer -->
 <div id="cartDrawerBackdrop" style="display:none; position:fixed; inset:0; background:rgba(0,0,0,0.8); backdrop-filter:blur(6px); z-index:9998;" onclick="if(event.target===this)closeCart()">
   <div style="position:fixed; top:0; right:0; bottom:0; width:100%; max-width:420px; background:#0a0404; border-left:1px solid #8c1212; display:flex; flex-direction:column; box-shadow:-10px 0 40px rgba(0,0,0,0.9); z-index:9999;">
-    <div style="padding:20px 24px; border-bottom:1px solid rgba(255,255,255,0.08); display:flex; justify-content:space-between; align-items:center;">
+    <div style="padding:22px 24px; border-bottom:1px solid rgba(255,255,255,0.08); display:flex; justify-content:space-between; align-items:center;">
       <h3 style="font-family:'Cinzel',serif; font-size:14px; font-weight:700; color:#fff; margin:0; letter-spacing:2px; text-transform:uppercase;">YOUR SELECTION</h3>
-      <button onclick="closeCart()" style="background:none; border:none; color:#a89f91; font-size:20px; cursor:pointer;">&times;</button>
+      <button onclick="closeCart()" style="background:none; border:none; color:#a89f91; font-size:22px; cursor:pointer;">&times;</button>
     </div>
     <div id="cartItemsContainer" style="flex:1; overflow-y:auto; padding:20px 24px; display:flex; flex-direction:column; gap:16px;"></div>
     <div style="padding:20px 24px; border-top:1px solid rgba(255,255,255,0.08); background:#060202;">
       <div style="display:flex; justify-content:space-between; margin-bottom:16px; font-family:'Plus Jakarta Sans',sans-serif;">
         <span style="color:#a89f91; font-size:12px; letter-spacing:1px;">SUBTOTAL:</span>
-        <span style="color:#ffffff; font-weight:700; font-size:16px;"><span id="cartSubtotalText">0</span> EGP</span>
+        <span style="color:#ffffff; font-weight:700; font-size:17px;"><span id="cartSubtotalText">0</span> EGP</span>
       </div>
-      <button onclick="openCheckout()" style="width:100%; background:#8c1212; color:#fff; border:none; padding:14px; border-radius:6px; font-family:'Plus Jakarta Sans',sans-serif; font-weight:700; font-size:12px; letter-spacing:2px; text-transform:uppercase; cursor:pointer;">
+      <button onclick="openCheckout()" style="width:100%; background:#8c1212; color:#fff; border:none; padding:15px; border-radius:6px; font-family:'Plus Jakarta Sans',sans-serif; font-weight:700; font-size:12px; letter-spacing:2px; text-transform:uppercase; cursor:pointer;">
         Proceed to Checkout &bull; إتمام الطلب &rarr;
       </button>
     </div>
@@ -1903,24 +2996,24 @@ details.velum-faq-item.active .velum-faq-answer,
 
 <!-- Checkout Modal -->
 <div id="checkoutModal" style="display:none; position:fixed; inset:0; background:rgba(0,0,0,0.85); backdrop-filter:blur(10px); z-index:10000; align-items:center; justify-content:center; padding:20px;">
-  <div style="background:#0c0606; border:1px solid #8c1212; border-radius:12px; width:100%; max-width:560px; max-height:90vh; overflow-y:auto; padding:30px; box-shadow:0 0 50px rgba(140,18,18,0.3);">
+  <div style="background:#0c0606; border:1px solid #8c1212; border-radius:12px; width:100%; max-width:560px; max-height:90vh; overflow-y:auto; padding:32px; box-shadow:0 0 50px rgba(140,18,18,0.3);">
     <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:20px; border-bottom:1px solid rgba(255,255,255,0.08); padding-bottom:14px;">
       <h3 style="font-family:'Cinzel',serif; font-size:20px; font-weight:700; color:#fff; margin:0; letter-spacing:1.5px; text-transform:uppercase;">COMPLETE YOUR ORDER</h3>
-      <button onclick="closeCheckout()" style="background:none; border:none; color:#a89f91; font-size:22px; cursor:pointer;">&times;</button>
+      <button onclick="closeCheckout()" style="background:none; border:none; color:#a89f91; font-size:24px; cursor:pointer;">&times;</button>
     </div>
     <form onsubmit="confirmOrder(event)">
       <div style="margin-bottom:16px;">
         <label style="display:block; font-size:11px; letter-spacing:1px; color:#c9a96e; text-transform:uppercase; margin-bottom:6px; font-weight:700;">Full Name / الاسم بالكامل *</label>
-        <input type="text" id="orderCustName" required placeholder="يوسف البدوي" style="width:100%; padding:12px; background:#140808; border:1px solid rgba(255,255,255,0.1); color:#fff; border-radius:6px; box-sizing:border-box; outline:none;" />
+        <input type="text" id="orderCustName" required placeholder="يوسف البدوي" style="width:100%; padding:13px; background:#140808; border:1px solid rgba(255,255,255,0.1); color:#fff; border-radius:6px; box-sizing:border-box; outline:none;" />
       </div>
       <div style="display:grid; grid-template-columns:1fr 1fr; gap:14px; margin-bottom:16px;">
         <div>
-          <label style="display:block; font-size:11px; letter-spacing:1px; color:#c9a96e; text-transform:uppercase; margin-bottom:6px; font-weight:700;">Phone / الهاتف *</label>
-          <input type="tel" id="orderCustPhone" required placeholder="010XXXXXXXX" style="width:100%; padding:12px; background:#140808; border:1px solid rgba(255,255,255,0.1); color:#fff; border-radius:6px; box-sizing:border-box; outline:none;" />
+          <label style="display:block; font-size:11px; letter-spacing:1px; color:#c9a96e; text-transform:uppercase; margin-bottom:6px; font-weight:700;">Phone / الهاتف (واتساب) *</label>
+          <input type="tel" id="orderCustPhone" required placeholder="010XXXXXXXX" style="width:100%; padding:13px; background:#140808; border:1px solid rgba(255,255,255,0.1); color:#fff; border-radius:6px; box-sizing:border-box; outline:none;" />
         </div>
         <div>
           <label style="display:block; font-size:11px; letter-spacing:1px; color:#c9a96e; text-transform:uppercase; margin-bottom:6px; font-weight:700;">Governorate / المحافظة *</label>
-          <select id="orderCustGov" onchange="calcCheckoutShipping()" style="width:100%; padding:12px; background:#140808; border:1px solid rgba(255,255,255,0.1); color:#fff; border-radius:6px; box-sizing:border-box; outline:none;">
+          <select id="orderCustGov" onchange="calcCheckoutShipping()" style="width:100%; padding:13px; background:#140808; border:1px solid rgba(255,255,255,0.1); color:#fff; border-radius:6px; box-sizing:border-box; outline:none;">
             <option value="Cairo" data-fee="50">القاهرة (50 EGP)</option>
             <option value="Giza" data-fee="50">الجيزة (50 EGP)</option>
             <option value="Alexandria" data-fee="60">الإسكندرية (60 EGP)</option>
@@ -1931,17 +3024,17 @@ details.velum-faq-item.active .velum-faq-answer,
       </div>
       <div style="margin-bottom:16px;">
         <label style="display:block; font-size:11px; letter-spacing:1px; color:#c9a96e; text-transform:uppercase; margin-bottom:6px; font-weight:700;">Address / العنوان بالتفصيل *</label>
-        <textarea id="orderCustAddress" required rows="2" placeholder="المنطقة، الشارع، العمارة، رقم الشقة" style="width:100%; padding:12px; background:#140808; border:1px solid rgba(255,255,255,0.1); color:#fff; border-radius:6px; box-sizing:border-box; outline:none;"></textarea>
+        <textarea id="orderCustAddress" required rows="2" placeholder="المنطقة، الشارع، العمارة، رقم الشقة" style="width:100%; padding:13px; background:#140808; border:1px solid rgba(255,255,255,0.1); color:#fff; border-radius:6px; box-sizing:border-box; outline:none;"></textarea>
       </div>
       <div style="margin-bottom:20px;">
         <label style="display:block; font-size:11px; letter-spacing:1px; color:#c9a96e; text-transform:uppercase; margin-bottom:6px; font-weight:700;">Payment Method / طريقة الدفع</label>
-        <select id="orderCustPayment" style="width:100%; padding:12px; background:#140808; border:1px solid rgba(255,255,255,0.1); color:#fff; border-radius:6px; box-sizing:border-box; outline:none;">
+        <select id="orderCustPayment" style="width:100%; padding:13px; background:#140808; border:1px solid rgba(255,255,255,0.1); color:#fff; border-radius:6px; box-sizing:border-box; outline:none;">
           <option value="COD">الدفع عند الاستلام (Cash on Delivery)</option>
           <option value="InstaPay">إنستاباي / محفظة إلكترونية (InstaPay)</option>
         </select>
       </div>
       
-      <div style="background:#140808; border:1px solid rgba(140,18,18,0.3); border-radius:8px; padding:16px; margin-bottom:20px; font-family:'Plus Jakarta Sans',sans-serif; font-size:13px;">
+      <div style="background:#140808; border:1px solid rgba(140,18,18,0.3); border-radius:8px; padding:18px; margin-bottom:22px; font-family:'Plus Jakarta Sans',sans-serif; font-size:13px;">
         <div style="display:flex; justify-content:space-between; margin-bottom:6px; color:#a89f91;">
           <span>Subtotal:</span>
           <span><span id="checkoutSubtotal">0</span> EGP</span>
@@ -1956,7 +3049,7 @@ details.velum-faq-item.active .velum-faq-answer,
         </div>
       </div>
 
-      <button type="submit" style="width:100%; background:#8c1212; color:#fff; border:none; padding:14px; border-radius:6px; font-family:'Plus Jakarta Sans',sans-serif; font-weight:700; font-size:13px; letter-spacing:2px; text-transform:uppercase; cursor:pointer;">
+      <button type="submit" style="width:100%; background:#8c1212; color:#fff; border:none; padding:15px; border-radius:6px; font-family:'Plus Jakarta Sans',sans-serif; font-weight:700; font-size:13px; letter-spacing:2px; text-transform:uppercase; cursor:pointer;">
         Confirm Order &bull; تأكيد الطلب
       </button>
     </form>
@@ -1965,8 +3058,8 @@ details.velum-faq-item.active .velum-faq-answer,
 
 <!-- Success Modal -->
 <div id="orderSuccessModal" style="display:none; position:fixed; inset:0; background:rgba(0,0,0,0.85); backdrop-filter:blur(10px); z-index:10001; align-items:center; justify-content:center; padding:20px;">
-  <div style="background:#0c0606; border:1px solid #8c1212; border-radius:12px; width:100%; max-width:480px; text-align:center; padding:36px; box-shadow:0 0 50px rgba(140,18,18,0.4);">
-    <div style="width:54px; height:54px; border-radius:50%; background:#8c1212; color:#fff; display:flex; align-items:center; justify-content:center; margin:0 auto 16px; font-size:24px;">&#10003;</div>
+  <div style="background:#0c0606; border:1px solid #8c1212; border-radius:12px; width:100%; max-width:480px; text-align:center; padding:38px; box-shadow:0 0 50px rgba(140,18,18,0.4);">
+    <div style="width:56px; height:56px; border-radius:50%; background:#8c1212; color:#fff; display:flex; align-items:center; justify-content:center; margin:0 auto 16px; font-size:26px;">&#10003;</div>
     <h3 style="font-family:'Cinzel',serif; font-size:22px; color:#fff; margin:0 0 10px 0; text-transform:uppercase;">ORDER CONFIRMED</h3>
     <p style="color:#a89f91; font-size:13px; line-height:1.6; margin:0 0 20px 0;">
       تم استلام طلبك بنجاح! رقم الطلب:<br>
@@ -1975,7 +3068,7 @@ details.velum-faq-item.active .velum-faq-answer,
     <p style="color:#c9a96e; font-size:12px; margin-bottom:24px;">
       سيتم التواصل معك هاتفياً أو عبر الواتساب لتأكيد الشحن خلال 24 ساعة.
     </p>
-    <button onclick="document.getElementById('orderSuccessModal').style.display='none'" style="background:#8c1212; color:#fff; border:none; padding:12px 28px; border-radius:6px; font-weight:700; cursor:pointer; text-transform:uppercase; font-size:12px; letter-spacing:1px;">
+    <button onclick="document.getElementById('orderSuccessModal').style.display='none'" style="background:#8c1212; color:#fff; border:none; padding:12px 30px; border-radius:6px; font-weight:700; cursor:pointer; text-transform:uppercase; font-size:12px; letter-spacing:1px;">
       Continue Shopping
     </button>
   </div>
@@ -1983,13 +3076,13 @@ details.velum-faq-item.active .velum-faq-answer,
 
 <!-- Admin Portal Modal -->
 <div id="adminPortalModal" style="display:none; position:fixed; inset:0; background:rgba(0,0,0,0.9); backdrop-filter:blur(12px); z-index:10002; align-items:center; justify-content:center; padding:20px;">
-  <div style="background:#0a0404; border:1px solid #8c1212; border-radius:12px; width:100%; max-width:920px; max-height:90vh; overflow-y:auto; padding:30px;">
+  <div style="background:#0a0404; border:1px solid #8c1212; border-radius:12px; width:100%; max-width:940px; max-height:90vh; overflow-y:auto; padding:32px;">
     <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:24px; border-bottom:1px solid rgba(255,255,255,0.08); padding-bottom:14px;">
       <div>
         <h3 style="font-family:'Cinzel',serif; font-size:20px; color:#fff; margin:0; text-transform:uppercase;">VELUM &bull; MERCHANT PORTAL</h3>
         <span style="font-size:11px; color:#c9a96e; letter-spacing:1px;">ORDERS &amp; REVENUE OVERVIEW</span>
       </div>
-      <button onclick="document.getElementById('adminPortalModal').style.display='none'" style="background:none; border:none; color:#a89f91; font-size:22px; cursor:pointer;">&times;</button>
+      <button onclick="document.getElementById('adminPortalModal').style.display='none'" style="background:none; border:none; color:#a89f91; font-size:24px; cursor:pointer;">&times;</button>
     </div>
     <div style="display:grid; grid-template-columns:repeat(3,1fr); gap:16px; margin-bottom:24px;">
       <div style="background:#140808; padding:18px; border-radius:8px; border:1px solid rgba(255,255,255,0.06);">
@@ -2030,309 +3123,7 @@ details.velum-faq-item.active .velum-faq-answer,
 
   
   <script>
-    
-(function() {
-  function injectGlobalRuntimeStyles() {
-    var existing = document.getElementById('velum-global-runtime-style');
-    if (existing) return;
-    var style = document.createElement('style');
-    style.id = 'velum-global-runtime-style';
-    style.textContent = [
-      '/* HEADER OVERRIDES - DESKTOP */',
-      '@media (min-width: 769px) {',
-      '  header {',
-      '    display: grid !important;',
-      '    grid-template-columns: 1fr auto 1fr !important;',
-      '    align-items: center !important;',
-      '    padding: 14px 24px !important;',
-      '    background-color: #000000 !important;',
-      '    position: relative !important;',
-      '  }',
-      '  #nav-menu {',
-      '    grid-column: 1 !important;',
-      '    display: flex !important;',
-      '    align-items: center !important;',
-      '    justify-content: flex-start !important;',
-      '  }',
-      '  #logo {',
-      '    grid-column: 2 !important;',
-      '    display: flex !important;',
-      '    align-items: center !important;',
-      '    justify-content: center !important;',
-      '    position: static !important;',
-      '    transform: none !important;',
-      '    margin: 0 auto !important;',
-      '    padding: 0 !important;',
-      '    width: auto !important;',
-      '    z-index: 10 !important;',
-      '  }',
-      '}',
-      '/* HEADER OVERRIDES - MOBILE (3-ZONE CLEAN LAYOUT) */',
-      '@media (max-width: 768px) {',
-      '  header {',
-      '    position: relative !important;',
-      '    display: flex !important;',
-      '    align-items: center !important;',
-      '    justify-content: space-between !important;',
-      '    padding: 10px 16px !important;',
-      '    min-height: 56px !important;',
-      '    width: 100% !important;',
-      '    box-sizing: border-box !important;',
-      '  }',
-      '  header button:has(span.sr-only), header button[class*="-m-2.5"][class*="sm:hidden"] {',
-      '    position: absolute !important;',
-      '    left: 16px !important;',
-      '    right: auto !important;',
-      '    top: 50% !important;',
-      '    transform: translateY(-50%) !important;',
-      '    z-index: 40 !important;',
-      '    margin: 0 !important;',
-      '    width: 36px !important;',
-      '    height: 36px !important;',
-      '  }',
-      '  #logo {',
-      '    position: absolute !important;',
-      '    left: 50% !important;',
-      '    right: auto !important;',
-      '    top: 50% !important;',
-      '    transform: translate(-50%, -50%) !important;',
-      '    margin: 0 !important;',
-      '    width: auto !important;',
-      '    z-index: 30 !important;',
-      '  }',
-      '  #menu {',
-      '    position: absolute !important;',
-      '    right: 16px !important;',
-      '    left: auto !important;',
-      '    top: 50% !important;',
-      '    transform: translateY(-50%) !important;',
-      '    margin: 0 !important;',
-      '    z-index: 40 !important;',
-      '    display: flex !important;',
-      '    align-items: center !important;',
-      '    justify-content: flex-end !important;',
-      '    width: auto !important;',
-      '  }',
-      '  #menu > div {',
-      '    display: flex !important;',
-      '    align-items: center !important;',
-      '    justify-content: flex-end !important;',
-      '    gap: 12px !important;',
-      '    min-height: auto !important;',
-      '    padding: 0 !important;',
-      '    margin: 0 !important;',
-      '  }',
-      '}',
-      '#logo, #logo > div, div[id="logo"] > div {',
-      '  overflow: visible !important;',
-      '  background: transparent !important;',
-      '  border: none !important;',
-      '  border-radius: 0 !important;',
-      '  box-shadow: none !important;',
-      '}',
-      '#logo a {',
-      '  display: inline-flex !important;',
-      '  align-items: center !important;',
-      '  justify-content: center !important;',
-      '  background: transparent !important;',
-      '  border: none !important;',
-      '  border-radius: 0 !important;',
-      '  box-shadow: none !important;',
-      '  text-decoration: none !important;',
-      '  transition: transform 0.25s ease !important;',
-      '}',
-      '#logo a:hover { transform: scale(1.05) !important; }',
-      '#logo img, header a[href="/"] img, header img[alt="logo"] {',
-      '  display: block !important;',
-      '  border-radius: 0 !important;',
-      '  border: none !important;',
-      '  background: transparent !important;',
-      '  box-shadow: none !important;',
-      '  outline: none !important;',
-      '  -webkit-mask: none !important;',
-      '  mask: none !important;',
-      '  height: 54px !important;',
-      '  max-height: 54px !important;',
-      '  width: auto !important;',
-      '  max-width: 220px !important;',
-      '  object-fit: contain !important;',
-      '  filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.8)) !important;',
-      '}',
-      '#menu {',
-      '  grid-column: 3 !important;',
-      '  display: flex !important;',
-      '  align-items: center !important;',
-      '  justify-content: flex-end !important;',
-      '}',
-      '#menu .relative.max-w-lg, header form, header form .relative {',
-      '  max-width: 220px !important;',
-      '}',
-/* cleaned */,
-      '',
-      '/* HORIZONTAL SCROLL VIBE FILTER PILLS */',
-      '.velum-vibe-filter-bar {',
-      '  display: flex !important;',
-      '  align-items: center !important;',
-      '  gap: 8px !important;',
-      '  overflow-x: auto !important;',
-      '  -webkit-overflow-scrolling: touch !important;',
-      '  scrollbar-width: none !important;',
-      '  padding: 8px 12px 18px 12px !important;',
-      '  margin: 0 auto 16px auto !important;',
-      '  max-width: 100% !important;',
-      '  justify-content: flex-start !important;',
-      '}',
-      '.velum-vibe-filter-bar::-webkit-scrollbar { display: none !important; }',
-      '@media (min-width: 769px) {',
-      '  .velum-vibe-filter-bar { justify-content: center !important; }',
-      '}',
-      '.velum-vibe-pill {',
-      '  flex-shrink: 0 !important;',
-      '  background: rgba(255, 255, 255, 0.04) !important;',
-      '  border: 1px solid rgba(255, 255, 255, 0.12) !important;',
-      '  color: #a0a0a0 !important;',
-      '  padding: 8px 16px !important;',
-      '  border-radius: 9999px !important;',
-      '  font-family: "Plus Jakarta Sans", sans-serif !important;',
-      '  font-size: 11px !important;',
-      '  font-weight: 600 !important;',
-      '  letter-spacing: 0.8px !important;',
-      '  text-transform: uppercase !important;',
-      '  cursor: pointer !important;',
-      '  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1) !important;',
-      '  user-select: none !important;',
-      '  white-space: nowrap !important;',
-      '  outline: none !important;',
-      '}',
-      '.velum-vibe-pill:hover {',
-      '  background: rgba(255, 255, 255, 0.08) !important;',
-      '  color: #ffffff !important;',
-      '  border-color: rgba(255, 255, 255, 0.25) !important;',
-      '}',
-      '.velum-vibe-pill.active {',
-      '  background: rgba(140, 18, 18, 0.55) !important;',
-      '  border-color: #c91818 !important;',
-      '  color: #ffffff !important;',
-      '  box-shadow: 0 0 16px rgba(201, 24, 24, 0.45) !important;',
-      '}',
-      '',
-      '/* SCENT NOTES TAGLINE ON PRODUCT CARDS */',
-      '.velum-scent-notes {',
-      '  font-family: "Plus Jakarta Sans", -apple-system, BlinkMacSystemFont, sans-serif !important;',
-      '  font-size: 10px !important;',
-      '  font-weight: 600 !important;',
-      '  letter-spacing: 0.4px !important;',
-      '  color: #f2bfbf !important;',
-      '  background: rgba(140, 18, 18, 0.18) !important;',
-      '  border: 1px solid rgba(140, 18, 18, 0.35) !important;',
-      '  border-radius: 5px !important;',
-      '  padding: 4px 8px !important;',
-      '  margin: 6px auto 4px auto !important;',
-      '  display: block !important;',
-      '  text-align: center !important;',
-      '  white-space: normal !important;',
-      '  line-height: 1.35 !important;',
-      '  width: fit-content !important;',
-      '  max-width: 95% !important;',
-      '}',
-      '',
-      '/* SMART MOBILE STICKY BOTTOM BAR */',
-      '.velum-sticky-bottom-bar { display: none; }',
-      '@media (max-width: 768px) {',
-      '  body { padding-bottom: 70px !important; }',
-      '  .velum-sticky-bottom-bar {',
-      '    display: block !important;',
-      '    position: fixed !important;',
-      '    bottom: 0 !important;',
-      '    left: 0 !important;',
-      '    right: 0 !important;',
-      '    width: 100% !important;',
-      '    z-index: 99999 !important;',
-      '    background: rgba(8, 8, 8, 0.94) !important;',
-      '    backdrop-filter: blur(16px) !important;',
-      '    -webkit-backdrop-filter: blur(16px) !important;',
-      '    border-top: 1px solid rgba(140, 18, 18, 0.45) !important;',
-      '    box-shadow: 0 -4px 25px rgba(0, 0, 0, 0.85) !important;',
-      '    padding: 10px 16px !important;',
-      '    padding-bottom: max(10px, env(safe-area-inset-bottom)) !important;',
-      '  }',
-      '  .velum-sticky-bar-inner {',
-      '    display: flex !important;',
-      '    align-items: center !important;',
-      '    justify-content: space-between !important;',
-      '    max-width: 500px !important;',
-      '    margin: 0 auto !important;',
-      '    gap: 12px !important;',
-      '  }',
-      '  .velum-sticky-bar-info {',
-      '    display: flex !important;',
-      '    flex-direction: column !important;',
-      '    align-items: flex-start !important;',
-      '    line-height: 1.25 !important;',
-      '  }',
-      '  .velum-sticky-pill {',
-      '    font-family: "Cinzel", serif !important;',
-      '    font-size: 11px !important;',
-      '    font-weight: 800 !important;',
-      '    letter-spacing: 1.2px !important;',
-      '    color: #ffffff !important;',
-      '  }',
-      '  .velum-sticky-sub {',
-      '    font-family: "Plus Jakarta Sans", sans-serif !important;',
-      '    font-size: 10px !important;',
-      '    color: #d84545 !important;',
-      '    font-weight: 600 !important;',
-      '    margin-top: 2px !important;',
-      '  }',
-      '  .velum-sticky-bar-cta {',
-      '    display: inline-flex !important;',
-      '    align-items: center !important;',
-      '    justify-content: center !important;',
-      '    background: #8c1212 !important;',
-      '    color: #ffffff !important;',
-      '    font-family: "Cinzel", serif !important;',
-      '    font-size: 11px !important;',
-      '    font-weight: 800 !important;',
-      '    letter-spacing: 1.5px !important;',
-      '    text-transform: uppercase !important;',
-      '    padding: 9px 16px !important;',
-      '    border-radius: 6px !important;',
-      '    text-decoration: none !important;',
-      '    box-shadow: 0 0 16px rgba(140, 18, 18, 0.5) !important;',
-      '    border: 1px solid rgba(255, 255, 255, 0.25) !important;',
-      '    transition: all 0.2s ease !important;',
-      '    white-space: nowrap !important;',
-      '  }',
-      '  .velum-sticky-bar-cta:active {',
-      '    transform: scale(0.97) !important;',
-      '    background: #a81616 !important;',
-      '  }',
-      '}',
-      '',
-
-    ].join('\n');
-    document.head.appendChild(style);
-  }
-
-  function fixLogoDOM() {
-    var imgs = document.querySelectorAll('#logo img, header a[href="/"] img, header img[alt="logo"]');
-    var newLogo = 'https://cdn.vondera.app/stores/m2YjlfvGkHgUUlfXpywuC0x1pXX2/gallery/5baddef3-b0ea-4b1b-85d6-7e8107dffb2f.webp';
-    imgs.forEach(function(img) {
-      if (img.src !== newLogo) {
-        img.src = newLogo;
-        img.srcset = newLogo;
-      }
-      img.classList.remove('rounded-full');
-      img.style.borderRadius = '0px';
-      img.style.background = 'transparent';
-      img.style.border = 'none';
-      img.style.boxShadow = 'none';
-      img.style.height = '54px';
-      img.style.maxHeight = '54px';
-      img.style.width = 'auto';
-    });
-  }
-
+    (function() {
   function initVelumSlider() {
     var slider = document.getElementById('velumHeroSlider');
     if (!slider) return;
@@ -2423,268 +3214,27 @@ details.velum-faq-item.active .velum-faq-answer,
     }
   }
 
-  /* =========================================================================
-     PRODUCT VIBES FILTERING & SCENT NOTES INJECTION
-     ========================================================================= */
-  var PERFUMES_MAP = {
-    'smoking-hot': {
-      slugs: ['smoking-hot', '62932254'],
-      vibes: ['all', 'bestsellers', 'smoky-winter'],
-      notes: 'Apple Shisha • Warm Bourbon • Cinnamon'
-    },
-    'drunk-lovers': {
-      slugs: ['drunk-lovers', '49371173'],
-      vibes: ['all', 'bestsellers', 'smoky-winter'],
-      notes: 'Red Chili • Wild Cognac • Spices'
-    },
-    'penguin': {
-      slugs: ['penguin', '51001357'],
-      vibes: ['all', 'fresh-crisp'],
-      notes: 'Crisp Air • Frosted Plum • Juniper'
-    },
-    'nuts': {
-      slugs: ['nuts', '54598915'],
-      vibes: ['all', 'smoky-winter'],
-      notes: 'Roasted Hazelnut • Nutty Cream • Chocolate'
-    },
-    'oud-maracuja': {
-      slugs: ['oud-maracuja', '84352490'],
-      vibes: ['all', 'bestsellers', 'exotic-oud'],
-      notes: 'Passion Fruit • Dark Leather • Rich Oud'
-    },
-    'hibiscus': {
-      slugs: ['hibiscus', '43993336'],
-      vibes: ['all', 'bestsellers', 'exotic-oud'],
-      notes: 'Hibiscus Flower • Leather • Vanilla Pod'
-    },
-    'gold-juice': {
-      slugs: ['gold-juice', '63657861'],
-      vibes: ['all', 'fresh-crisp'],
-      notes: 'Honey Melon • Woody Woods • Amber'
-    },
-    'la-nuit': {
-      slugs: ['la-nuit', '29366544', 'lhomme'],
-      vibes: ['all', 'bestsellers', 'fresh-crisp'],
-      notes: 'Cardamom • Cedar • Bergamot'
-    },
-    'stronger-with-you': {
-      slugs: ['stronger-with-you', '80530753', 'armani'],
-      vibes: ['all', 'smoky-winter'],
-      notes: 'Roasted Chestnut • Lavender • Amber'
-    }
-  };
-
-  function matchPerfume(card) {
-    var href = '';
-    var link = card.querySelector('a[href*="/product/"]');
-    if (link && link.href) href = link.href.toLowerCase();
-    var text = (card.textContent || '').toLowerCase();
-    for (var key in PERFUMES_MAP) {
-      var p = PERFUMES_MAP[key];
-      for (var i = 0; i < p.slugs.length; i++) {
-        var s = p.slugs[i];
-        if (href.indexOf(s) !== -1 || text.indexOf(s.replace(/-/g, ' ')) !== -1) {
-          return p;
-        }
-      }
-    }
-    return null;
-  }
-
-  var currentActiveVibe = 'all';
-
-  function applyVibeFilter(vibe, grid) {
-    currentActiveVibe = vibe;
-    if (!grid) return;
-    var cards = grid.children;
-    for (var i = 0; i < cards.length; i++) {
-      var c = cards[i];
-      var cardVibes = c.getAttribute('data-velum-vibes') || 'all';
-      if (vibe === 'all' || cardVibes.indexOf(vibe) !== -1) {
-        c.style.display = '';
-      } else {
-        c.style.display = 'none';
-      }
-    }
-  }
-
-  function initProductVibesAndNotes() {
-    var productsSec = document.querySelector('[data-section-id="products"]') || document.getElementById('v-section_section_1791014332677_n3f3jxngt');
-    if (!productsSec) return;
-    var grid = productsSec.querySelector('.grid');
-    if (!grid) return;
-
-    // 1. Insert Horizontal Filter Bar above grid if not present
-    var filterBar = document.getElementById('velumVibeFilterBar');
-    if (!filterBar) {
-      filterBar = document.createElement('div');
-      filterBar.id = 'velumVibeFilterBar';
-      filterBar.className = 'velum-vibe-filter-bar';
-      filterBar.innerHTML = [
-        '<button type="button" class="velum-vibe-pill active" data-vibe="all">✦ ALL SCENTS (9)</button>',
-        '<button type="button" class="velum-vibe-pill" data-vibe="bestsellers">BESTSELLERS</button>',
-        '<button type="button" class="velum-vibe-pill" data-vibe="smoky-winter">SMOKY &amp; WINTER</button>',
-        '<button type="button" class="velum-vibe-pill" data-vibe="fresh-crisp">FRESH &amp; CRISP</button>',
-        '<button type="button" class="velum-vibe-pill" data-vibe="exotic-oud">EXOTIC OUD</button>'
-      ].join('');
-      
-      grid.parentNode.insertBefore(filterBar, grid);
-
-      filterBar.addEventListener('click', function(e) {
-        var btn = e.target.closest('.velum-vibe-pill');
-        if (!btn) return;
-        var vibe = btn.getAttribute('data-vibe');
-        var allPills = filterBar.querySelectorAll('.velum-vibe-pill');
-        allPills.forEach(function(p) { p.classList.remove('active'); });
-        btn.classList.add('active');
-        applyVibeFilter(vibe, grid);
-      });
-    }
-
-    // 2. Decorate each product card with notes and vibes
-    var cards = grid.children;
-    for (var i = 0; i < cards.length; i++) {
-      var card = cards[i];
-      // Skip skeleton placeholders
-      if (card.querySelector('.react-loading-skeleton')) continue;
-
-      var pData = matchPerfume(card);
-      if (pData) {
-        card.setAttribute('data-velum-vibes', pData.vibes.join(' '));
-        
-        var existingTag = card.querySelector('.velum-scent-notes');
-        if (!existingTag) {
-          var tag = document.createElement('div');
-          tag.className = 'velum-scent-notes';
-          tag.textContent = pData.notes;
-          
-          var titleEl = card.querySelector('.v-pc-title') || card.querySelector('h3') || card.querySelector('p');
-          if (titleEl && titleEl.parentNode) {
-            titleEl.parentNode.insertBefore(tag, titleEl.nextSibling);
-          } else {
-            card.appendChild(tag);
-          }
-        }
-      }
-    }
-
-    // Apply currently active filter
-    applyVibeFilter(currentActiveVibe, grid);
-  }
-
-  /* =========================================================================
-     SMART FLOATING STICKY BOTTOM BAR (MOBILE ONLY)
-     ========================================================================= */
-  function initStickyBottomBar() {
-    var bar = document.getElementById('velumStickyBottomBar');
-    if (bar) return;
-    bar = document.createElement('div');
-    bar.id = 'velumStickyBottomBar';
-    bar.className = 'velum-sticky-bottom-bar';
-    bar.innerHTML = [
-      '<div class="velum-sticky-bar-inner">',
-      '  <div class="velum-sticky-bar-info">',
-      '    <span class="velum-sticky-pill">✦ FREE SHIPPING</span>',
-      '    <span class="velum-sticky-sub">Free delivery on 2+ bottles</span>',
-      '  </div>',
-      '  <a href="#v-section_section_1791014332677_n3f3jxngt" class="velum-sticky-bar-cta" id="velumStickyCtaBtn">',
-      '    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin-right: 6px; display: inline-block; vertical-align: middle;"><path d="M9 3h6v3H9zM10 6v2h4V6M6 8h12a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V10a2 2 0 0 1 2-2z"/></svg><span>SHOP SCENTS</span> <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="margin-left: 5px; display: inline-block; vertical-align: middle;"><path d="M5 12h14M12 5l7 7-7 7"/></svg>',
-      '  </a>',
-      '</div>'
-    ].join('');
-    document.body.appendChild(bar);
-
-    var btn = document.getElementById('velumStickyCtaBtn');
-    if (btn) {
-      btn.addEventListener('click', function(e) {
-        e.preventDefault();
-        var target = document.querySelector('[data-section-id="products"]') || document.getElementById('v-section_section_1791014332677_n3f3jxngt');
-        if (target) {
-          target.scrollIntoView({ behavior: 'smooth' });
-        } else {
-          window.location.href = '/products/all';
-        }
-      });
-    }
-  }
-
-  function setupObserver() {
-    var productsSec = document.querySelector('[data-section-id="products"]') || document.getElementById('v-section_section_1791014332677_n3f3jxngt');
-    if (productsSec && window.MutationObserver) {
-      var observer = new MutationObserver(function() {
-        initProductVibesAndNotes();
-      });
-      observer.observe(productsSec, { childList: true, subtree: true });
-    }
-  }
-
-    function relocateMobileHeader() {
-    if (window.innerWidth > 768) return;
-    var header = document.querySelector('header');
-    if (!header) return;
-    var burger = header.querySelector('#menu button[class*="-m-2.5"], #menu button:has(span.sr-only)');
-    if (burger && burger.parentElement !== header) {
-      header.insertBefore(burger, header.firstChild);
-      burger.style.position = 'absolute';
-      burger.style.left = '16px';
-      burger.style.right = 'auto';
-      burger.style.top = '50%';
-      burger.style.transform = 'translateY(-50%)';
-      burger.style.zIndex = '40';
-      burger.style.margin = '0';
-    }
-    var logo = document.getElementById('logo');
-    if (logo) {
-      logo.style.position = 'absolute';
-      logo.style.left = '50%';
-      logo.style.right = 'auto';
-      logo.style.top = '50%';
-      logo.style.transform = 'translate(-50%, -50%)';
-      logo.style.zIndex = '30';
-      logo.style.margin = '0';
-    }
-    var menu = document.getElementById('menu');
-    if (menu) {
-      menu.style.position = 'absolute';
-      menu.style.right = '16px';
-      menu.style.left = 'auto';
-      menu.style.top = '50%';
-      menu.style.transform = 'translateY(-50%)';
-      menu.style.zIndex = '40';
-      menu.style.margin = '0';
-      menu.style.display = 'flex';
-      menu.style.alignItems = 'center';
-      menu.style.justifyContent = 'flex-end';
-    }
-  }
-
-function runAll() {
-    injectGlobalRuntimeStyles();
-    relocateMobileHeader();
-    fixLogoDOM();
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', function() {
+      initVelumSlider();
+      enhanceMarquee();
+      applyFavicon();
+    });
+  } else {
     initVelumSlider();
     enhanceMarquee();
     applyFavicon();
-    initProductVibesAndNotes();
-    initStickyBottomBar();
   }
-
-  if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', function() {
-      runAll();
-      setupObserver();
-    });
-  } else {
-    runAll();
-    setupObserver();
-  }
-
-  setTimeout(runAll, 200);
-  setTimeout(runAll, 600);
-  setTimeout(runAll, 1200);
-  setTimeout(runAll, 2500);
+  setTimeout(function() {
+    initVelumSlider();
+    enhanceMarquee();
+    applyFavicon();
+  }, 400);
+  setTimeout(function() {
+    initVelumSlider();
+    enhanceMarquee();
+  }, 1200);
 })();
-
   </script>
   
 <script>
@@ -2784,8 +3334,6 @@ function calcCheckoutShipping() {
 
   const gov = document.getElementById('orderCustGov');
   let fee = parseInt(gov.options[gov.selectedIndex].getAttribute('data-fee') || 50);
-  
-  // Free shipping promo for 2+ bottles
   if (totalQty >= 2) fee = 0;
 
   document.getElementById('checkoutSubtotal').textContent = subtotal.toLocaleString();
